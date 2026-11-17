@@ -368,7 +368,10 @@ async function websocketHandler(request, requestPrxIP = "", vmessUUID = DEFAULT_
   const webSocketPair = new WebSocketPair();
   const [client, webSocket] = Object.values(webSocketPair);
 
-  webSocket.accept();
+  // Keep binary frames as ArrayBuffer regardless of future compatibility-date changes.
+  webSocket.binaryType = "arraybuffer";
+  // Proxy both halves independently so client close does not prematurely close upstream.
+  webSocket.accept({ allowHalfOpen: true });
 
   let addressLog = "";
   let portLog = "";
@@ -497,8 +500,7 @@ async function protocolSniffer(buffer) {
     if (horseDelimiter[0] === 0x0d && horseDelimiter[1] === 0x0a) {
       if (horseDelimiter[2] === 0x01 || horseDelimiter[2] === 0x03 || horseDelimiter[2] === 0x7f) {
         if (horseDelimiter[3] === 0x01 || horseDelimiter[3] === 0x03 || horseDelimiter[3] === 0x04) {
-          return atob(horse);
-        }
+          return atob(horse);        }
       }
     }
   }
@@ -594,8 +596,7 @@ async function handleTCPOutBound(
     remoteSocket.value = tcpSocket;
     log(`connected to ${address}:${port}`);
     const writer = tcpSocket.writable.getWriter();
-    await writer.write(rawClientData);
-    writer.releaseLock();
+    try { await writer.write(rawClientData); } finally { writer.releaseLock(); }
 
     return tcpSocket;
   }
@@ -997,8 +998,7 @@ function readSsHeader(ssBuffer) {
 
   const portIndex = addressValueIndex + addressLength;
   if (ssBuffer.byteLength < portIndex + 2) return { hasError: true, message: "Incomplete Shadowsocks address or port" };
-  const portBuffer = ssBuffer.slice(portIndex, portIndex + 2);
-  const portRemote = new DataView(portBuffer).getUint16(0);
+  const portBuffer = ssBuffer.slice(portIndex, portIndex + 2);  const portRemote = new DataView(portBuffer).getUint16(0);
   return {
     hasError: false,
     addressRemote: addressValue,
