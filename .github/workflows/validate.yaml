@@ -11,6 +11,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: nautica-validate
+  cancel-in-progress: true
+
 jobs:
   syntax:
     runs-on: ubuntu-latest
