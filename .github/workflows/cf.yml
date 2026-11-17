@@ -27,6 +27,9 @@ jobs:
         id: revision
         run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+
       - name: Deploy with Wrangler
         uses: cloudflare/wrangler-action@v4
         with:
