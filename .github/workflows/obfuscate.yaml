@@ -10,15 +10,20 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: nautica-obfuscate
+  cancel-in-progress: true
+
 jobs:
   scanner:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           token: ${{ github.token }}
+          fetch-depth: 0
       - name: Use Bun
         uses: oven-sh/setup-bun@v2
       - name: Obfuscate
@@ -45,4 +50,6 @@ jobs:
           git add worker.js
           git diff --cached --quiet && exit 0
           git commit -m "Upload obfuscated worker"
+          git fetch origin main
+          git rebase origin/main
           git push origin HEAD:main
