@@ -145,7 +145,7 @@ async function reverseWeb(request, target, targetPath) {
 }
 
 function subscriptionPage() {
-  const html = \`<!doctype html>
+  const html = `<!doctype html>
 <html lang="id">
 <head>
 <meta charset="utf-8">
@@ -215,7 +215,7 @@ select,input,button,textarea{font:inherit;border-radius:10px}select,input{width:
  });
  $('load').click();
 })();
-</script></body></html>\`;
+</script></body></html>`;
   return new Response(html, {
     status: 200,
     headers: {
