@@ -35,6 +35,6 @@ jobs:
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add proxyList-ID.txt
+          git add proxyList-ID.txt proxyList-ID-metrics.json
           git commit -m "Refresh verified Indonesia proxy bank"
           git push origin HEAD:main
