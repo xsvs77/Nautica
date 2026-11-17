@@ -169,7 +169,7 @@ export default {
           const filterFormat = url.searchParams.get("format") || "raw";
           if (!["raw", atob(v2), atob(neko), "sfa", "bfr"].includes(filterFormat)) return new Response("Unsupported format", { status: 400, headers: CORS_HEADER_OPTIONS });
           const fillerDomain = url.searchParams.get("domain") || appDomain;
-          if (filterPort.some((p) => !/^\\d{1,5}$/.test(String(p)) || Number(p) < 1 || Number(p) > 65535)) return new Response("Invalid port", { status: 400, headers: CORS_HEADER_OPTIONS });
+          if (filterPort.some((p) => !/^\d{1,5}$/.test(String(p)) || Number(p) < 1 || Number(p) > 65535)) return new Response("Invalid port", { status: 400, headers: CORS_HEADER_OPTIONS });
           if (filterVPN.some((p) => !PROTOCOLS.includes(p))) return new Response("Unsupported VPN protocol", { status: 400, headers: CORS_HEADER_OPTIONS });
 
           const prxBankUrl = url.searchParams.get("prx-list") || env.PROXY_BANK_URL || env.PRX_BANK_URL;
