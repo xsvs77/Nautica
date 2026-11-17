@@ -26,6 +26,8 @@ jobs:
           fetch-depth: 0
       - name: Use Bun
         uses: oven-sh/setup-bun@v2
+      - name: Record source revision
+        run: echo "SOURCE_WORKER_BLOB=$(git rev-parse HEAD:_worker.js)" >> "$GITHUB_ENV"
       - name: Obfuscate
         run: |
           bun install
@@ -51,5 +53,10 @@ jobs:
           git diff --cached --quiet && exit 0
           git commit -m "Upload obfuscated worker"
           git fetch origin main
+          CURRENT_WORKER_BLOB="$(git rev-parse origin/main:_worker.js)"
+          if [ "$CURRENT_WORKER_BLOB" != "$SOURCE_WORKER_BLOB" ]; then
+            echo "Source _worker.js changed during obfuscation; skipping stale worker.js publish."
+            exit 0
+          fi
           git rebase origin/main
           git push origin HEAD:main
