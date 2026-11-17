@@ -17,7 +17,7 @@ SOURCES = (
     ("ProxyScrape", "https://raw.githubusercontent.com/proxyscrape/free-proxy-list/main/proxies/countries/id/http/data.json"),
     ("ProxMint", "https://raw.githubusercontent.com/proxmint/free-proxy-list/main/proxies/all.json"),
 )
-OUTPUT = Path("proxyList.txt")
+OUTPUT = Path("proxyList-ID.txt")
 MAX_CANDIDATES_PER_SOURCE = 50
 MAX_OUTPUT = 60
 TIMEOUT_SECONDS = 7
