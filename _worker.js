@@ -945,6 +945,7 @@ function readSsHeader(ssBuffer) {
       break;
     case 4:
       addressLength = 16;
+      if (ssBuffer.byteLength < addressValueIndex + addressLength) return { hasError: true, message: "Incomplete Shadowsocks IPv6 address" };
       const dataView = new DataView(ssBuffer.slice(addressValueIndex, addressValueIndex + addressLength));
       const ipv6 = [];
       for (let i = 0; i < 8; i++) {
@@ -1023,6 +1024,7 @@ function readNekoHeader(buffer) {
       break;
     case 3: // For IPv6
       addressLength = 16;
+      if (buffer.byteLength < addressValueIndex + addressLength) return { hasError: true, message: "Incomplete VLESS IPv6 address" };
       const dataView = new DataView(buffer.slice(addressValueIndex, addressValueIndex + addressLength));
       const ipv6 = [];
       for (let i = 0; i < 8; i++) {
@@ -1087,6 +1089,7 @@ function readHorseHeader(buffer) {
       break;
     case 4: // For IPv6
       addressLength = 16;
+      if (dataBuffer.byteLength < addressValueIndex + addressLength) return { hasError: true, message: "Incomplete Trojan IPv6 address" };
       const dataView = new DataView(dataBuffer.slice(addressValueIndex, addressValueIndex + addressLength));
       const ipv6 = [];
       for (let i = 0; i < 8; i++) {
