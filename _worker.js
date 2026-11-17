@@ -144,6 +144,88 @@ async function reverseWeb(request, target, targetPath) {
   return newResponse;
 }
 
+function subscriptionPage() {
+  const html = \`<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101827">
+<title>Nautica • Subscription</title>
+<style>
+:root{color-scheme:dark;--bg:#0b1220;--panel:#121d2e;--line:#26364d;--text:#e8f0fb;--muted:#93a4ba;--accent:#36d6a0}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(900px 500px at 80% -10%,#163a4b 0,transparent 60%),var(--bg);color:var(--text);font:15px system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh;padding:28px 16px}
+main{max-width:760px;margin:auto}.brand{font-size:13px;letter-spacing:.18em;color:var(--accent);font-weight:800}.card{margin-top:16px;padding:22px;background:rgba(18,29,46,.94);border:1px solid var(--line);border-radius:18px;box-shadow:0 18px 60px #0005}
+h1{font-size:27px;margin:8px 0}.desc{color:var(--muted);line-height:1.6;margin:0 0 20px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.field label{display:block;font-size:12px;color:var(--muted);margin:0 0 6px}
+select,input,button,textarea{font:inherit;border-radius:10px}select,input{width:100%;padding:11px;background:#0b1422;color:var(--text);border:1px solid var(--line)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}button{border:0;padding:11px 16px;font-weight:700;cursor:pointer;background:var(--accent);color:#06251b}button.secondary{background:#26364d;color:var(--text)}
+#status{margin:16px 0 8px;color:var(--muted);min-height:22px}textarea{width:100%;min-height:260px;resize:vertical;padding:13px;background:#08111d;color:#d7e7f7;border:1px solid var(--line);font:12px ui-monospace,SFMono-Regular,monospace;line-height:1.55}
+.note{font-size:12px;color:var(--muted);line-height:1.6;margin-top:14px}.count{color:var(--accent);font-weight:700}
+@media(max-width:520px){.grid{grid-template-columns:1fr}.card{padding:17px}h1{font-size:23px}}
+</style>
+</head>
+<body><main>
+<div class="brand">NAUTICA / INDONESIA</div>
+<section class="card">
+<h1>Proxy Subscription</h1>
+<p class="desc">Buat dan salin konfigurasi proxy langsung dari Worker Nautica. Pilih protokol dan port, lalu muat daftar terbaru.</p>
+<div class="grid">
+<div class="field"><label for="country">Negara</label><select id="country"><option value="ID">Indonesia (ID)</option><option value="">Semua negara</option></select></div>
+<div class="field"><label for="protocol">Protokol</label><select id="protocol"><option value="trojan">Trojan</option><option value="vmess">VMess</option><option value="vless">VLESS</option><option value="ss">Shadowsocks</option></select></div>
+<div class="field"><label for="port">Port Worker</label><select id="port"><option value="443">443 · TLS</option><option value="80">80 · Non-TLS</option></select></div>
+<div class="field"><label for="limit">Jumlah konfigurasi (maks. 100)</label><input id="limit" type="number" min="1" max="100" value="30"></div>
+</div>
+<div class="actions"><button id="load">Muat konfigurasi</button><button class="secondary" id="copy" disabled>Salin</button><button class="secondary" id="download" disabled>Unduh .txt</button></div>
+<div id="status" role="status">Siap. Tekan “Muat konfigurasi”.</div>
+<textarea id="output" spellcheck="false" placeholder="Konfigurasi akan muncul di sini..." readonly></textarea>
+<p class="note">Catatan: daftar yang tampil berasal dari bank proxy yang tersedia. Munculnya konfigurasi tidak menjamin setiap proxy selalu aktif. Uji koneksi sebelum digunakan.</p>
+</section></main>
+<script>
+(function(){
+ const $=function(id){return document.getElementById(id)};
+ const output=$('output'),status=$('status'),copy=$('copy'),download=$('download'),load=$('load');
+ function setStatus(message){status.textContent=message}
+ load.addEventListener('click',async function(){
+  const limit=Math.max(1,Math.min(100,Number($('limit').value)||30));
+  $('limit').value=String(limit);
+  const params=new URLSearchParams({cc:$('country').value,limit:String(limit),vpn:$('protocol').value,port:$('port').value});
+  load.disabled=true;copy.disabled=true;download.disabled=true;output.value='';
+  setStatus('Mengambil daftar proxy dari Nautica…');
+  try{
+   const response=await fetch('/api/v1/sub?'+params.toString(),{headers:{Accept:'text/plain'}});
+   const body=await response.text();
+   if(!response.ok)throw new Error(body||('HTTP '+response.status));
+   output.value=body.trim();
+   const count=output.value?output.value.split(/\\r?\\n/).length:0;
+   setStatus(count+' konfigurasi berhasil dimuat.');
+   copy.disabled=count===0;download.disabled=count===0;
+   if(!count)setStatus('Tidak ada proxy yang tersedia untuk filter ini. Coba ubah negara atau periksa kembali nanti.');
+  }catch(error){setStatus('Gagal memuat: '+error.message)}
+  finally{load.disabled=false}
+ });
+ copy.addEventListener('click',async function(){
+  try{await navigator.clipboard.writeText(output.value);setStatus('Konfigurasi berhasil disalin.')}
+  catch(e){output.focus();output.select();setStatus('Pilih teks lalu salin secara manual.')}
+ });
+ download.addEventListener('click',function(){
+  const blob=new Blob([output.value+'\\n'],{type:'text/plain;charset=utf-8'});
+  const url=URL.createObjectURL(blob),a=document.createElement('a');
+  a.href=url;a.download='nautica-subscription.txt';a.click();URL.revokeObjectURL(url);
+ });
+ $('load').click();
+})();
+</script></body></html>\`;
+  return new Response(html, {
+    status: 200,
+    headers: {
+      "Content-Type": "text/html; charset=UTF-8",
+      "Cache-Control": "no-store",
+      "X-Content-Type-Options": "nosniff",
+    },
+  });
+}
+
 export default {
   async fetch(request, env, ctx) {
     try {
@@ -178,7 +260,7 @@ export default {
       }
 
       if (url.pathname === "/sub" || url.pathname.startsWith("/sub/")) {
-        return Response.redirect(SUB_PAGE_URL + `?host=${appDomain}`, 301);
+        return subscriptionPage();
       } else if (url.pathname === "/check" || url.pathname.startsWith("/check/")) {
         const target = (url.searchParams.get("target") || "").trim();
         let host = "";
