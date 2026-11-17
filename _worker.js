@@ -150,9 +150,9 @@ export default {
         }
       }
 
-      if (url.pathname.startsWith("/sub")) {
+      if (url.pathname === "/sub" || url.pathname.startsWith("/sub/")) {
         return Response.redirect(SUB_PAGE_URL + `?host=${appDomain}`, 301);
-      } else if (url.pathname.startsWith("/check")) {
+      } else if (url.pathname === "/check" || url.pathname.startsWith("/check/")) {
         const target = (url.searchParams.get("target") || "").trim();
         let host = "";
         let portText = "443";
@@ -180,10 +180,10 @@ export default {
             "Content-Type": "application/json",
           },
         });
-      } else if (url.pathname.startsWith("/api/v1")) {
+      } else if (url.pathname === "/api/v1" || url.pathname.startsWith("/api/v1/")) {
         const apiPath = url.pathname.replace("/api/v1", "");
 
-        if (apiPath.startsWith("/sub")) {
+        if (apiPath === "/sub" || apiPath.startsWith("/sub/")) {
           const filterCC = (url.searchParams.get("cc")?.split(",") || []).map((cc) => cc.trim().toUpperCase());
           const filterPort = (url.searchParams.get("port")?.split(",") || PORTS).map((p) => String(p).trim());
           const filterVPN = (url.searchParams.get("vpn")?.split(",") || PROTOCOLS).map((p) => p.trim().toLowerCase());
@@ -207,7 +207,8 @@ export default {
           if (!filterPort.length || filterPort.some((p) => !/^\d{1,5}$/.test(p) || Number(p) < 1 || Number(p) > 65535)) return new Response("Invalid port", { status: 400, headers: CORS_HEADER_OPTIONS });
           if (filterVPN.some((p) => !PROTOCOLS.includes(p))) return new Response("Unsupported VPN protocol", { status: 400, headers: CORS_HEADER_OPTIONS });
 
-          const prxBankUrl = url.searchParams.get("prx-list") || env.PROXY_BANK_URL || env.PRX_BANK_URL;
+          // Only allow operator-configured proxy bank URLs; never fetch arbitrary user-supplied URLs.
+          const prxBankUrl = env.PROXY_BANK_URL || env.PRX_BANK_URL;
           const prxList = await getPrxList(prxBankUrl)
             .then((prxs) => {
               // Filter CC
@@ -321,7 +322,8 @@ export default {
       const targetReversePrx = env.REVERSE_PROXY_TARGET || env.REVERSE_PRX_TARGET || "example.com";
       return await reverseWeb(request, targetReversePrx);
     } catch (err) {
-      return new Response(`An error occurred: ${err.toString()}`, {
+      console.error("Request handler failed:", err);
+      return new Response("Internal Server Error", {
         status: 500,
         headers: {
           ...CORS_HEADER_OPTIONS,
