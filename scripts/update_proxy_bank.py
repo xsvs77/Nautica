@@ -139,7 +139,7 @@ def main():
     if not active:
         raise SystemExit("No proxy passed live verification; preserving previous proxy bank.")
 
-    lines = [f"{p['ip']},{p['port']},ID,{p['isp']} | {p['latency_ms']}ms | uptime {p['uptime_percent']}%" for p in active]
+    lines = [f"{p['ip']},{p['port']},ID,{p['isp']}" for p in active]
     OUTPUT.write_text("\n".join(lines) + "\n", encoding="utf-8")
     metrics = {
         "checked_at": checked_at,
