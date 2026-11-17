@@ -1,0 +1,40 @@
+name: Refresh Indonesia Proxy Bank
+
+on:
+  schedule:
+    - cron: "17,47 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: indonesia-proxy-bank
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Collect and verify Indonesia proxies
+        run: python3 scripts/update_proxy_bank.py
+      - name: Commit updated proxy bank
+        run: |
+          if git diff --quiet -- proxyList.txt; then
+            echo "Proxy bank unchanged."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add proxyList.txt
+          git commit -m "Refresh verified Indonesia proxy bank"
+          git push origin HEAD:main
