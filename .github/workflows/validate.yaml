@@ -1,0 +1,21 @@
+name: Validate Worker
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  syntax:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - name: Build Worker syntax
+        run: bun build _worker.js --target=bun --external cloudflare:sockets --outfile=/tmp/nautica-worker.js
