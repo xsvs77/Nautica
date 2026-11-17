@@ -217,8 +217,8 @@ export default {
               return prxs;
             })
             .then((prxs) => {
-              // shuffle result
-              shuffleArray(prxs);
+              // Proxy bank is already ranked by rolling uptime, then live latency.
+              // Preserve that order so subscriptions prioritize reliable, fast exits.
               return prxs;
             });
 
