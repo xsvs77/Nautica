@@ -14,10 +14,13 @@ permissions:
 jobs:
   syntax:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v2
       - name: Build Worker syntax
         run: bun build _worker.js --target=bun --external cloudflare:sockets --outfile=/tmp/nautica-worker.js
+      - name: Validate Cloudflare Workers bundle (dry run)
+        run: npx --yes wrangler@4 deploy --dry-run --outdir=/tmp/nautica-wrangler
       - name: Validate proxy bank script
         run: python3 -m py_compile scripts/update_proxy_bank.py
