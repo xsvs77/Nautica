@@ -7,6 +7,9 @@ on:
       - main
     paths:
       - "_worker.js"
+permissions:
+  contents: write
+
 jobs:
   scanner:
     if: github.ref == 'refs/heads/main'
@@ -15,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          token: ${{ secrets.GIT_TOKEN }}
+          token: ${{ github.token }}
       - name: Use Bun
         uses: oven-sh/setup-bun@v2
       - name: Obfuscate
