@@ -1,10 +1,6 @@
 import { connect } from "cloudflare:sockets";
 
 // Variables
-let serviceName = "";
-let APP_DOMAIN = "";
-
-let prxIP = "";
 let cachedPrxList = [];
 
 // Constant
@@ -92,10 +88,12 @@ async function getPrxList(prxBankUrl = PRX_BANK_URL) {
 
 async function reverseWeb(request, target, targetPath) {
   const targetUrl = new URL(request.url);
-  const targetChunk = target.split(":");
-
-  targetUrl.hostname = targetChunk[0];
-  targetUrl.port = targetChunk[1]?.toString() || "443";
+  const normalizedTarget = /^[a-z][a-z0-9+.-]*:\/\//i.test(target) ? target : `https://${target}`;
+  const parsedTarget = new URL(normalizedTarget);
+  if (!["http:", "https:"].includes(parsedTarget.protocol) || !parsedTarget.hostname) return new Response("Invalid reverse proxy target", { status: 400 });
+  targetUrl.protocol = parsedTarget.protocol;
+  targetUrl.hostname = parsedTarget.hostname;
+  targetUrl.port = parsedTarget.port || (parsedTarget.protocol === "https:" ? "443" : "80");
   targetUrl.pathname = targetPath || targetUrl.pathname;
 
   const modifiedRequest = new Request(targetUrl, request);
@@ -117,8 +115,8 @@ export default {
   async fetch(request, env, ctx) {
     try {
       const url = new URL(request.url);
-      APP_DOMAIN = url.hostname;
-      serviceName = APP_DOMAIN.split(".")[0];
+      const appDomain = url.hostname;
+      const serviceName = appDomain.split(".")[0];
 
       const upgradeHeader = request.headers.get("Upgrade");
 
@@ -132,20 +130,24 @@ export default {
           const prxKey = prxKeys[Math.floor(Math.random() * prxKeys.length)];
           const kvPrx = await getKVPrxList();
 
-          prxIP = kvPrx[prxKey][Math.floor(Math.random() * kvPrx[prxKey].length)];
-
-          return await websocketHandler(request);
+          const candidates = kvPrx?.[prxKey];
+          if (!Array.isArray(candidates) || candidates.length === 0) return new Response("No proxy available for requested country", { status: 404 });
+          const requestPrxIP = candidates[Math.floor(Math.random() * candidates.length)];
+          return await websocketHandler(request, requestPrxIP);
         } else if (prxMatch) {
-          prxIP = prxMatch[1];
-          return await websocketHandler(request);
+          const requestPrxIP = prxMatch[1];
+          return await websocketHandler(request, requestPrxIP);
         }
       }
 
       if (url.pathname.startsWith("/sub")) {
-        return Response.redirect(SUB_PAGE_URL + `?host=${APP_DOMAIN}`, 301);
+        return Response.redirect(SUB_PAGE_URL + `?host=${appDomain}`, 301);
       } else if (url.pathname.startsWith("/check")) {
-        const target = url.searchParams.get("target").split(":");
-        const result = await checkPrxHealth(target[0], target[1] || "443");
+        const target = url.searchParams.get("target");
+        const match = target?.match(/^\[?([a-f0-9:.]+|[a-z0-9.-]+)\]?(?::(\d{1,5}))?$/i);
+        const port = Number(match?.[2] || 443);
+        if (!match || port < 1 || port > 65535) return new Response("Invalid target", { status: 400, headers: CORS_HEADER_OPTIONS });
+        const result = await checkPrxHealth(match[1], String(port));
 
         return new Response(JSON.stringify(result), {
           status: 200,
@@ -161,11 +163,16 @@ export default {
           const filterCC = url.searchParams.get("cc")?.split(",") || [];
           const filterPort = url.searchParams.get("port")?.split(",") || PORTS;
           const filterVPN = url.searchParams.get("vpn")?.split(",") || PROTOCOLS;
-          const filterLimit = parseInt(url.searchParams.get("limit")) || 10;
+          const rawLimit = url.searchParams.get("limit");
+          const filterLimit = rawLimit === null ? 10 : Number(rawLimit);
+          if (!Number.isInteger(filterLimit) || filterLimit < 1 || filterLimit > 100) return new Response("limit must be an integer from 1 to 100", { status: 400, headers: CORS_HEADER_OPTIONS });
           const filterFormat = url.searchParams.get("format") || "raw";
-          const fillerDomain = url.searchParams.get("domain") || APP_DOMAIN;
+          if (!["raw", atob(v2), atob(neko), "sfa", "bfr"].includes(filterFormat)) return new Response("Unsupported format", { status: 400, headers: CORS_HEADER_OPTIONS });
+          const fillerDomain = url.searchParams.get("domain") || appDomain;
+          if (filterPort.some((p) => !/^\\d{1,5}$/.test(String(p)) || Number(p) < 1 || Number(p) > 65535)) return new Response("Invalid port", { status: 400, headers: CORS_HEADER_OPTIONS });
+          if (filterVPN.some((p) => !PROTOCOLS.includes(p))) return new Response("Unsupported VPN protocol", { status: 400, headers: CORS_HEADER_OPTIONS });
 
-          const prxBankUrl = url.searchParams.get("prx-list") || env.PRX_BANK_URL;
+          const prxBankUrl = url.searchParams.get("prx-list") || env.PROXY_BANK_URL || env.PRX_BANK_URL;
           const prxList = await getPrxList(prxBankUrl)
             .then((prxs) => {
               // Filter CC
@@ -186,7 +193,7 @@ export default {
             const uri = new URL(`${atob(horse)}://${fillerDomain}`);
             uri.searchParams.set("encryption", "none");
             uri.searchParams.set("type", "ws");
-            uri.searchParams.set("host", APP_DOMAIN);
+            uri.searchParams.set("host", appDomain);
 
             for (const port of filterPort) {
               for (const protocol of filterVPN) {
@@ -200,14 +207,14 @@ export default {
                     "plugin",
                     `${atob(v2)}-plugin${port == 80 ? "" : ";tls"};mux=0;mode=websocket;path=/${prx.prxIP}-${
                       prx.prxPort
-                    };host=${APP_DOMAIN}`,
+                    };host=${appDomain}`,
                   );
                 } else {
                   uri.username = uuid;
                 }
 
                 uri.searchParams.set("security", port == 443 ? "tls" : "none");
-                uri.searchParams.set("sni", port == 80 && protocol == atob(flash) ? "" : APP_DOMAIN);
+                uri.searchParams.set("sni", port == 80 && protocol == atob(flash) ? "" : appDomain);
                 uri.searchParams.set("path", `/${prx.prxIP}-${prx.prxPort}`);
 
                 uri.hash = `${result.length + 1} ${getFlagEmoji(prx.country)} ${prx.org} WS ${
@@ -275,7 +282,7 @@ export default {
         }
       }
 
-      const targetReversePrx = env.REVERSE_PRX_TARGET || "example.com";
+      const targetReversePrx = env.REVERSE_PROXY_TARGET || env.REVERSE_PRX_TARGET || "example.com";
       return await reverseWeb(request, targetReversePrx);
     } catch (err) {
       return new Response(`An error occurred: ${err.toString()}`, {
@@ -288,7 +295,7 @@ export default {
   },
 };
 
-async function websocketHandler(request) {
+async function websocketHandler(request, requestPrxIP = "") {
   const webSocketPair = new WebSocketPair();
   const [client, webSocket] = Object.values(webSocketPair);
 
@@ -395,6 +402,7 @@ async function websocketHandler(request) {
             webSocket,
             responseHeader,
             log,
+            requestPrxIP,
           );
         },
         close() {
@@ -509,6 +517,7 @@ async function handleTCPOutBound(
   webSocket,
   responseHeader,
   log,
+  requestPrxIP = "",
 ) {
   async function connectAndWrite(address, port) {
     const tcpSocket = connect({
@@ -526,8 +535,8 @@ async function handleTCPOutBound(
 
   async function retry() {
     const tcpSocket = await connectAndWrite(
-      prxIP.split(/[:=-]/)[0] || addressRemote,
-      prxIP.split(/[:=-]/)[1] || portRemote,
+      requestPrxIP.split(/[:=-]/)[0] || addressRemote,
+      requestPrxIP.split(/[:=-]/)[1] || portRemote,
     );
     tcpSocket.closed
       .catch((error) => {
