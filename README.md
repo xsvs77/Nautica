@@ -26,7 +26,7 @@ Sebuah repository serverless tunnel studi kasus Indonesia
   - [x] Negara `&cc=ID,SG,...`
 - [x] Subscription API
   - [x] Country Code `&cc=ID,SG,JP,KR,...`
-  - [x] Format `&format=clash` (raw, clash, sfa, bfr, v2ray)
+  - [x] Format `&format=raw|clash|vless|sfa|bfr|v2ray`
   - [x] Limit `&limit=10`
   - [x] VPN `&vpn=vless,trojan,ss,vmess`
   - [x] Port `&port=443,80`
