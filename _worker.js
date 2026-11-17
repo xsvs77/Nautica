@@ -1,11 +1,7 @@
 import { connect } from "cloudflare:sockets";
 
 // Variables
-let serviceName = "";
-let APP_DOMAIN = "";
 
-let prxIP = "";
-let cachedPrxList = [];
 
 // Constant
 const horse = "dHJvamFu";
@@ -71,31 +67,39 @@ async function getPrxList(prxBankUrl = PRX_BANK_URL) {
 
   const prxBank = await fetch(prxBankUrl);
   if (prxBank.status == 200) {
+    if (!prxBank.ok) return [];
     const text = (await prxBank.text()) || "";
-
-    const prxString = text.split("\n").filter(Boolean);
-    cachedPrxList = prxString
-      .map((entry) => {
-        const [prxIP, prxPort, country, org] = entry.split(",");
-        return {
-          prxIP: prxIP || "Unknown",
-          prxPort: prxPort || "Unknown",
-          country: country || "Unknown",
-          org: org || "Unknown Org",
-        };
-      })
-      .filter(Boolean);
+    return text.split(/\r?\n/).map((entry) => {
+      const [rawIP, rawPort, rawCountry, ...orgParts] = entry.split(",");
+      const prxIP = (rawIP || "").trim();
+      const port = Number((rawPort || "").trim());
+      const country = (rawCountry || "").trim().toUpperCase();
+      const org = orgParts.join(",").trim() || "Unknown Org";
+      const validHost = /^(?:[a-z0-9.-]+|\[[0-9a-f:]+\]|[0-9a-f:.]+)$/i.test(prxIP);
+      if (!validHost || !Number.isInteger(port) || port < 1 || port > 65535 || !/^[A-Z]{2}$/.test(country)) return null;
+      return { prxIP, prxPort: String(port), country, org };
+    }).filter(Boolean);
   }
 
-  return cachedPrxList;
+  return [];
 }
 
 async function reverseWeb(request, target, targetPath) {
   const targetUrl = new URL(request.url);
-  const targetChunk = target.split(":");
-
-  targetUrl.hostname = targetChunk[0];
-  targetUrl.port = targetChunk[1]?.toString() || "443";
+  let parsedTarget;
+  try {
+    const normalizedTarget = /^[a-z][a-z0-9+.-]*:\/\//i.test(target) ? target : `https://${target}`;
+    parsedTarget = new URL(normalizedTarget);
+  } catch {
+    return new Response("Invalid reverse proxy target", { status: 400 });
+  }
+  if (!["http:", "https:"].includes(parsedTarget.protocol) || !parsedTarget.hostname ||
+      parsedTarget.username || parsedTarget.password) {
+    return new Response("Invalid reverse proxy target", { status: 400 });
+  }
+  targetUrl.protocol = parsedTarget.protocol;
+  targetUrl.hostname = parsedTarget.hostname;
+  targetUrl.port = parsedTarget.port || (parsedTarget.protocol === "https:" ? "443" : "80");
   targetUrl.pathname = targetPath || targetUrl.pathname;
 
   const modifiedRequest = new Request(targetUrl, request);
@@ -117,8 +121,12 @@ export default {
   async fetch(request, env, ctx) {
     try {
       const url = new URL(request.url);
-      APP_DOMAIN = url.hostname;
-      serviceName = APP_DOMAIN.split(".")[0];
+      const appDomain = url.hostname;
+      const serviceName = appDomain.split(".")[0];
+
+      if (request.method === "OPTIONS") {
+        return new Response(null, { status: 204, headers: CORS_HEADER_OPTIONS });
+      }
 
       const upgradeHeader = request.headers.get("Upgrade");
 
@@ -132,20 +140,38 @@ export default {
           const prxKey = prxKeys[Math.floor(Math.random() * prxKeys.length)];
           const kvPrx = await getKVPrxList();
 
-          prxIP = kvPrx[prxKey][Math.floor(Math.random() * kvPrx[prxKey].length)];
-
-          return await websocketHandler(request);
+          const candidates = kvPrx?.[prxKey];
+          if (!Array.isArray(candidates) || candidates.length === 0) return new Response("No proxy available for requested country", { status: 404 });
+          const requestPrxIP = candidates[Math.floor(Math.random() * candidates.length)];
+          return await websocketHandler(request, requestPrxIP);
         } else if (prxMatch) {
-          prxIP = prxMatch[1];
-          return await websocketHandler(request);
+          const requestPrxIP = prxMatch[1];
+          return await websocketHandler(request, requestPrxIP);
         }
       }
 
       if (url.pathname.startsWith("/sub")) {
-        return Response.redirect(SUB_PAGE_URL + `?host=${APP_DOMAIN}`, 301);
+        return Response.redirect(SUB_PAGE_URL + `?host=${appDomain}`, 301);
       } else if (url.pathname.startsWith("/check")) {
-        const target = url.searchParams.get("target").split(":");
-        const result = await checkPrxHealth(target[0], target[1] || "443");
+        const target = (url.searchParams.get("target") || "").trim();
+        let host = "";
+        let portText = "443";
+        const ipv6Match = target.match(/^\[([0-9a-f:]+)\](?::(\d{1,5}))?$/i);
+        const hostMatch = target.match(/^([a-z0-9.-]+)(?::(\d{1,5}))?$/i);
+        if (ipv6Match) {
+          host = ipv6Match[1];
+          portText = ipv6Match[2] || "443";
+        } else if (hostMatch) {
+          host = hostMatch[1];
+          portText = hostMatch[2] || "443";
+        } else {
+          return new Response("Invalid target", { status: 400, headers: CORS_HEADER_OPTIONS });
+        }
+        const port = Number(portText);
+        if (!host || port < 1 || port > 65535 || host.startsWith(".") || host.endsWith(".") || host.includes("..")) {
+          return new Response("Invalid target", { status: 400, headers: CORS_HEADER_OPTIONS });
+        }
+        const result = await checkPrxHealth(host, String(port));
 
         return new Response(JSON.stringify(result), {
           status: 200,
@@ -158,14 +184,30 @@ export default {
         const apiPath = url.pathname.replace("/api/v1", "");
 
         if (apiPath.startsWith("/sub")) {
-          const filterCC = url.searchParams.get("cc")?.split(",") || [];
-          const filterPort = url.searchParams.get("port")?.split(",") || PORTS;
-          const filterVPN = url.searchParams.get("vpn")?.split(",") || PROTOCOLS;
-          const filterLimit = parseInt(url.searchParams.get("limit")) || 10;
+          const filterCC = (url.searchParams.get("cc")?.split(",") || []).map((cc) => cc.trim().toUpperCase());
+          const filterPort = (url.searchParams.get("port")?.split(",") || PORTS).map((p) => String(p).trim());
+          const filterVPN = (url.searchParams.get("vpn")?.split(",") || PROTOCOLS).map((p) => p.trim().toLowerCase());
+          const rawLimit = url.searchParams.get("limit");
+          const filterLimit = rawLimit === null ? 10 : Number(rawLimit);
+          if (!Number.isInteger(filterLimit) || filterLimit < 1 || filterLimit > 100) return new Response("limit must be an integer from 1 to 100", { status: 400, headers: CORS_HEADER_OPTIONS });
           const filterFormat = url.searchParams.get("format") || "raw";
-          const fillerDomain = url.searchParams.get("domain") || APP_DOMAIN;
+          if (!["raw", "clash", atob(v2), atob(neko), "sfa", "bfr"].includes(filterFormat)) return new Response("Unsupported format", { status: 400, headers: CORS_HEADER_OPTIONS });
+          const fillerDomain = url.searchParams.get("domain") || appDomain;
+          let parsedFillerDomain;
+          try {
+            parsedFillerDomain = new URL(`https://${fillerDomain}`);
+          } catch {
+            return new Response("Invalid domain", { status: 400, headers: CORS_HEADER_OPTIONS });
+          }
+          if (!parsedFillerDomain.hostname || parsedFillerDomain.username || parsedFillerDomain.password ||
+              parsedFillerDomain.pathname !== "/" || parsedFillerDomain.search || parsedFillerDomain.hash) {
+            return new Response("Invalid domain", { status: 400, headers: CORS_HEADER_OPTIONS });
+          }
+          if (filterCC.some((cc) => !/^[A-Z]{2}$/.test(cc))) return new Response("Invalid country code", { status: 400, headers: CORS_HEADER_OPTIONS });
+          if (!filterPort.length || filterPort.some((p) => !/^\d{1,5}$/.test(p) || Number(p) < 1 || Number(p) > 65535)) return new Response("Invalid port", { status: 400, headers: CORS_HEADER_OPTIONS });
+          if (filterVPN.some((p) => !PROTOCOLS.includes(p))) return new Response("Unsupported VPN protocol", { status: 400, headers: CORS_HEADER_OPTIONS });
 
-          const prxBankUrl = url.searchParams.get("prx-list") || env.PRX_BANK_URL;
+          const prxBankUrl = url.searchParams.get("prx-list") || env.PROXY_BANK_URL || env.PRX_BANK_URL;
           const prxList = await getPrxList(prxBankUrl)
             .then((prxs) => {
               // Filter CC
@@ -186,7 +228,7 @@ export default {
             const uri = new URL(`${atob(horse)}://${fillerDomain}`);
             uri.searchParams.set("encryption", "none");
             uri.searchParams.set("type", "ws");
-            uri.searchParams.set("host", APP_DOMAIN);
+            uri.searchParams.set("host", appDomain);
 
             for (const port of filterPort) {
               for (const protocol of filterVPN) {
@@ -200,14 +242,14 @@ export default {
                     "plugin",
                     `${atob(v2)}-plugin${port == 80 ? "" : ";tls"};mux=0;mode=websocket;path=/${prx.prxIP}-${
                       prx.prxPort
-                    };host=${APP_DOMAIN}`,
+                    };host=${appDomain}`,
                   );
                 } else {
                   uri.username = uuid;
                 }
 
                 uri.searchParams.set("security", port == 443 ? "tls" : "none");
-                uri.searchParams.set("sni", port == 80 && protocol == atob(flash) ? "" : APP_DOMAIN);
+                uri.searchParams.set("sni", port == 80 && protocol == atob(flash) ? "" : appDomain);
                 uri.searchParams.set("path", `/${prx.prxIP}-${prx.prxPort}`);
 
                 uri.hash = `${result.length + 1} ${getFlagEmoji(prx.country)} ${prx.org} WS ${
@@ -226,6 +268,7 @@ export default {
             case atob(v2):
               finalResult = btoa(result.join("\n"));
               break;
+            case "clash":
             case atob(neko):
             case "sfa":
             case "bfr":
@@ -275,7 +318,7 @@ export default {
         }
       }
 
-      const targetReversePrx = env.REVERSE_PRX_TARGET || "example.com";
+      const targetReversePrx = env.REVERSE_PROXY_TARGET || env.REVERSE_PRX_TARGET || "example.com";
       return await reverseWeb(request, targetReversePrx);
     } catch (err) {
       return new Response(`An error occurred: ${err.toString()}`, {
@@ -288,7 +331,7 @@ export default {
   },
 };
 
-async function websocketHandler(request) {
+async function websocketHandler(request, requestPrxIP = "") {
   const webSocketPair = new WebSocketPair();
   const [client, webSocket] = Object.values(webSocketPair);
 
@@ -395,6 +438,7 @@ async function websocketHandler(request) {
             webSocket,
             responseHeader,
             log,
+            requestPrxIP,
           );
         },
         close() {
@@ -509,6 +553,7 @@ async function handleTCPOutBound(
   webSocket,
   responseHeader,
   log,
+  requestPrxIP = "",
 ) {
   async function connectAndWrite(address, port) {
     const tcpSocket = connect({
@@ -526,8 +571,8 @@ async function handleTCPOutBound(
 
   async function retry() {
     const tcpSocket = await connectAndWrite(
-      prxIP.split(/[:=-]/)[0] || addressRemote,
-      prxIP.split(/[:=-]/)[1] || portRemote,
+      requestPrxIP.split(/[:=-]/)[0] || addressRemote,
+      requestPrxIP.split(/[:=-]/)[1] || portRemote,
     );
     tcpSocket.closed
       .catch((error) => {
@@ -731,6 +776,7 @@ async function aesGcmEncrypt(key, nonce, data, aad) {
 // Stream Protocol Handler
 async function readStreamHeader(buffer) {
   try {
+    if (!buffer || buffer.byteLength < 60) return { hasError: true, message: "Incomplete VMess AEAD header" };
     // For simplicity, we'll use a fixed UUID for decryption
     // In production, this should be configured
     const uuidString = "00000000-0000-0000-0000-000000000000";
@@ -759,7 +805,11 @@ async function readStreamHeader(buffer) {
 
     // Decrypt header length (AAD is authId)
     const lengthBytes = await aesGcmDecrypt(lengthKey, lengthIv, encryptedLength, authId);
+    if (lengthBytes.length < 2) return { hasError: true, message: "Invalid VMess header length" };
     const headerLength = (lengthBytes[0] << 8) | lengthBytes[1];
+    if (headerLength < 41 || headerLength > 4096 || buffer.byteLength < 42 + headerLength + 16) {
+      return { hasError: true, message: "Incomplete or oversized VMess header payload" };
+    }
 
     // Read encrypted header payload (with 16 bytes GCM tag)
     const encryptedHeader = new Uint8Array(buffer.slice(42, 42 + headerLength + 16));
@@ -777,7 +827,8 @@ async function readStreamHeader(buffer) {
     console.log("Header payload (hex):", arrayBufferToHex(headerPayload.buffer));
 
     // Parse decrypted header - following exact Rust implementation order
-    const view = new DataView(headerPayload.buffer);
+    if (headerPayload.byteLength < 41) return { hasError: true, message: "VMess header payload is too short" };
+    const view = new DataView(headerPayload.buffer, headerPayload.byteOffset, headerPayload.byteLength);
     let offset = 0;
 
     // Version (1 byte)
@@ -874,6 +925,7 @@ async function readStreamHeader(buffer) {
 }
 
 function readSsHeader(ssBuffer) {
+  if (!ssBuffer || ssBuffer.byteLength < 1) return { hasError: true, message: "Incomplete Shadowsocks header" };
   const view = new DataView(ssBuffer);
 
   const addressType = view.getUint8(0);
@@ -915,6 +967,7 @@ function readSsHeader(ssBuffer) {
   }
 
   const portIndex = addressValueIndex + addressLength;
+  if (ssBuffer.byteLength < portIndex + 2) return { hasError: true, message: "Incomplete Shadowsocks address or port" };
   const portBuffer = ssBuffer.slice(portIndex, portIndex + 2);
   const portRemote = new DataView(portBuffer).getUint16(0);
   return {
@@ -930,6 +983,7 @@ function readSsHeader(ssBuffer) {
 }
 
 function readNekoHeader(buffer) {
+  if (!buffer || buffer.byteLength < 22) return { hasError: true, message: "Incomplete VLESS header" };
   const version = new Uint8Array(buffer.slice(0, 1));
   let isUDP = false;
 
@@ -946,6 +1000,7 @@ function readNekoHeader(buffer) {
     };
   }
   const portIndex = 18 + optLength + 1;
+  if (buffer.byteLength < portIndex + 2) return { hasError: true, message: "Incomplete VLESS port" };
   const portBuffer = buffer.slice(portIndex, portIndex + 2);
   const portRemote = new DataView(portBuffer).getUint16(0);
 
@@ -981,11 +1036,8 @@ function readNekoHeader(buffer) {
         message: `invild  addressType is ${addressType}`,
       };
   }
-  if (!addressValue) {
-    return {
-      hasError: true,
-      message: `addressValue is empty, addressType is ${addressType}`,
-    };
+  if (!addressValue || buffer.byteLength < addressValueIndex + addressLength) {
+    return { hasError: true, message: "Incomplete VLESS destination address" };
   }
 
   return {
@@ -1001,6 +1053,7 @@ function readNekoHeader(buffer) {
 }
 
 function readHorseHeader(buffer) {
+  if (!buffer || buffer.byteLength < 64) return { hasError: true, message: "Incomplete Trojan header" };
   const dataBuffer = buffer.slice(58);
   if (dataBuffer.byteLength < 6) {
     return {
@@ -1056,6 +1109,7 @@ function readHorseHeader(buffer) {
   }
 
   const portIndex = addressValueIndex + addressLength;
+  if (dataBuffer.byteLength < portIndex + 2) return { hasError: true, message: "Incomplete Trojan destination address or port" };
   const portBuffer = dataBuffer.slice(portIndex, portIndex + 2);
   const portRemote = new DataView(portBuffer).getUint16(0);
   return {
@@ -1118,8 +1172,16 @@ function safeCloseWebSocket(socket) {
 }
 
 async function checkPrxHealth(prxIP, prxPort) {
-  const req = await fetch(`${PRX_HEALTH_CHECK_API}?ip=${prxIP}:${prxPort}`);
-  return await req.json();
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 8000);
+  try {
+    const target = `${prxIP.includes(":") ? `[${prxIP}]` : prxIP}:${prxPort}`;
+    const req = await fetch(`${PRX_HEALTH_CHECK_API}?ip=${encodeURIComponent(target)}`, { signal: controller.signal });
+    if (!req.ok) throw new Error(`Health check failed: HTTP ${req.status}`);
+    return await req.json();
+  } finally {
+    clearTimeout(timeout);
+  }
 }
 
 // Helpers
