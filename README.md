@@ -73,25 +73,29 @@ Klik tombol di bawah
 - Contoh daftar proxy [proxyList.txt](https://raw.githubusercontent.com/dickymuliafiqri/Nautica/refs/heads/main/proxyList.txt)
 - Contoh reverse proxy [example.com](https://example.com)
 
-## Cara Aktivasi API
+## Konfigurasi Cloudflare Worker
 
-Salah satu fungsi API adalah agar kalian bisa melihat dan menambahkan subdomain wildcards ke workers.
+Kode yang digunakan untuk deployment adalah `_worker.js` (sesuai `main` pada `wrangler.toml`). Versi saat ini tidak memerlukan KV Namespace binding; daftar proxy KV dibaca dari file JSON melalui HTTPS.
 
-Berikut cara aktivasinya:
+Atur environment variables berikut di **Worker → Settings → Variables and Secrets**:
 
-1. Masuk ke halaman editor workers yang sudah kalian buat
-2. Isi `variable` dari baris ke 4-9 sesuai dengan key yang kalian miliki
-3. Deploy
+| Nama | Jenis | Wajib | Fungsi |
+|---|---|---:|---|
+| `VMESS_UUID` | Secret | Disarankan jika VMess dipakai | UUID autentikasi VMess. Nilai yang sama dipakai saat membuat subscription dan membaca header VMess. |
+| `PROXY_BANK_URL` | Variable | Tidak | URL daftar proxy format `IP,port,CC,ISP`. Default: Proxy Bank Indonesia di repository ini. Alias lama: `PRX_BANK_URL`. |
+| `KV_PROXY_URL` | Variable | Tidak | URL HTTPS file JSON proxy per negara. Default: `kvProxyList.json` di repository ini. |
+| `REVERSE_PROXY_TARGET` | Variable | Tidak | Host/URL tujuan reverse proxy untuk path yang tidak dikenali. Default: `example.com`. Alias lama: `REVERSE_PRX_TARGET`. |
 
-### Aktivasi Wildcard (Custom Domain)
+**Penting untuk VMess:** jika `VMESS_UUID` tidak diatur, kompatibilitas lama menggunakan UUID nol yang diketahui publik. Untuk penggunaan pribadi/produksi, buat UUID sendiri dan simpan sebagai Secret bernama `VMESS_UUID`. Jangan gunakan UUID nol untuk layanan publik.
 
-1. Selesaikan langkah [Aktivasi API](#cara-aktivasi-api)
-2. Isi variable `rootDomain` dengan domain utama kalian
-   - Contoh: Domain workers `nautica.foolvpn.me`, berarti domain utamanya adalah `foolvpn.me`
-3. Isi variable `serviceName` dengan nama workers kalian
-   - Contoh: Domain workers `nautica.foolvpn.me`, berarti nama workersnya adalah `nautica`
-4. Buat custom domain di pengaturan workers dengan kombinasi `serviceName`.`rootDomain`
-   - Contoh: `nautica.foolvpn.me`
+Setelah mengatur variabel/secret, deploy Worker. Tidak ada langkah aktivasi API melalui variabel `rootDomain` atau `serviceName` pada kode `_worker.js` saat ini. Untuk domain sendiri, tambahkan domain melalui **Worker → Settings → Domains & Routes → Add Custom Domain** dan pastikan DNS/domain dikelola di Cloudflare.
+
+### Catatan akses dan keamanan
+
+- Endpoint subscription dan pemeriksaan proxy bersifat publik pada kode saat ini; gunakan Cloudflare WAF/rate limiting jika Worker dibuka untuk umum.
+- Jangan memasukkan kredensial atau data sensitif ke koneksi melalui proxy publik.
+- Jika tidak mengatur `PROXY_BANK_URL` atau `KV_PROXY_URL`, Worker mengambil daftar default dari repository `xsvs77/Nautica`.
+- Pastikan URL daftar proxy khusus menggunakan HTTPS (Proxy Bank juga menerima HTTP untuk kompatibilitas, tetapi HTTPS lebih disarankan).
 
 # Endpoint
 
