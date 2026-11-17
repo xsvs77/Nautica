@@ -103,3 +103,13 @@ Berikut cara aktivasinya:
 
 - Hal aneh lain yang saya kerjakan [FoolVPN](https://t.me/foolvpn)
 - Tanya-tanya -> [Telegram](https://t.me/d_fordlalatina)
+
+
+## Indonesia Proxy Bank
+
+Nautica's default Indonesia proxy bank is:
+`https://raw.githubusercontent.com/xsvs77/Nautica/main/proxyList-ID.txt`
+
+The scheduled GitHub Actions workflow collects candidates from public country-filtered feeds, then independently tests each candidate through HTTPS and keeps only endpoints whose observed exit IP geolocates to Indonesia. It refreshes every 30 minutes and can also be run manually from **Actions → Refresh Indonesia Proxy Bank → Run workflow**.
+
+Sources: [ProxyScrape Indonesia HTTP feed](https://github.com/ProxyScrape/free-proxy-list) and [ProxMint public proxy feed](https://github.com/proxmint/free-proxy-list). Public proxies are third-party systems and may disappear at any time. Use only for testing; never send credentials or sensitive traffic through them.
