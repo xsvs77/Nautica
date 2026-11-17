@@ -12,7 +12,8 @@ const v2 = "djJyYXk=";
 const PORTS = [443, 80];
 const PROTOCOLS = [atob(horse), atob(flash), atob(neko), "ss"];
 const SUB_PAGE_URL = "https://foolvpn.web.id/nautica";
-const KV_PRX_URL = "https://raw.githubusercontent.com/FoolVPN-ID/Nautica/refs/heads/main/kvProxyList.json";
+const KV_PRX_URL = "https://raw.githubusercontent.com/xsvs77/Nautica/main/kvProxyList.json";
+const DEFAULT_VMESS_UUID = "00000000-0000-0000-0000-000000000000";
 const PRX_BANK_URL = "https://raw.githubusercontent.com/xsvs77/Nautica/main/proxyList-ID.txt";
 const DNS_SERVER_ADDRESS = "8.8.8.8";
 const DNS_SERVER_PORT = 53;
@@ -40,17 +41,40 @@ const SALT_B2 = atob("QUVBRCBSZXNwIEhlYWRlciBMZW4gSVY=");
 const SALT_B3 = atob("QUVBRCBSZXNwIEhlYWRlciBLZXk=");
 const SALT_B4 = atob("QUVBRCBSZXNwIEhlYWRlciBJVg==");
 
-async function getKVPrxList(kvPrxUrl = KV_PRX_URL) {
-  if (!kvPrxUrl) {
-    throw new Error("No URL Provided!");
-  }
+async function fetchTextWithTimeout(url, timeoutMs = 8000, maxBytes = 1024 * 1024, options = {}) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    const response = await fetch(url, { ...options, signal: controller.signal });
+    if (!response.ok) throw new Error("Upstream request failed: HTTP " + response.status);
+    const declaredLength = Number(response.headers.get("content-length") || 0);
+    if (declaredLength > maxBytes) throw new Error("Upstream response exceeds size limit");
+    const body = await response.text();
+    if (new TextEncoder().encode(body).byteLength > maxBytes) throw new Error("Upstream response exceeds size limit");
+    return body;
+  } finally { clearTimeout(timeout); }
+}
 
-  const kvPrx = await fetch(kvPrxUrl);
-  if (kvPrx.status == 200) {
-    return await kvPrx.json();
-  } else {
-    return {};
+async function getKVPrxList(kvPrxUrl = KV_PRX_URL) {
+  if (!kvPrxUrl) throw new Error("No URL Provided!");
+  const parsedUrl = new URL(kvPrxUrl);
+  if (parsedUrl.protocol !== "https:") throw new Error("KV proxy list URL must use HTTPS");
+  const source = JSON.parse(await fetchTextWithTimeout(parsedUrl.toString(), 8000, 1024 * 1024));
+  if (!source || typeof source !== "object" || Array.isArray(source)) return {};
+  const result = {};
+  for (const [country, entries] of Object.entries(source)) {
+    if (!/^[A-Z]{2}$/.test(country) || !Array.isArray(entries)) continue;
+    const valid = entries.filter((entry) => {
+      if (typeof entry !== "string") return false;
+      const match = entry.match(/^(\d{1,3}(?:\.\d{1,3}){3}):(\d{1,5})$/);
+      if (!match) return false;
+      const octets = match[1].split(".").map(Number);
+      const port = Number(match[2]);
+      return octets.every((part) => part >= 0 && part <= 255) && port >= 1 && port <= 65535;
+    }).slice(0, 100);
+    if (valid.length) result[country] = valid;
   }
+  return result;
 }
 
 async function getPrxList(prxBankUrl = PRX_BANK_URL) {
@@ -65,10 +89,13 @@ async function getPrxList(prxBankUrl = PRX_BANK_URL) {
     throw new Error("No URL Provided!");
   }
 
-  const prxBank = await fetch(prxBankUrl);
-  if (prxBank.status == 200) {
-    if (!prxBank.ok) return [];
-    const text = (await prxBank.text()) || "";
+  const parsedUrl = new URL(prxBankUrl);
+  if (!["https:", "http:"].includes(parsedUrl.protocol)) throw new Error("Proxy bank URL must use HTTP or HTTPS");
+  let bankText;
+  try { bankText = await fetchTextWithTimeout(parsedUrl.toString(), 8000, 512 * 1024); }
+  catch (error) { console.error("Proxy bank fetch failed:", error); return []; }
+  if (bankText) {
+    const text = bankText || "";
     return text.split(/\r?\n/).map((entry) => {
       const [rawIP, rawPort, rawCountry, ...orgParts] = entry.split(",");
       const prxIP = (rawIP || "").trim();
@@ -138,15 +165,15 @@ export default {
           // Contoh: /ID, /SG, dll
           const prxKeys = url.pathname.replace("/", "").toUpperCase().split(",");
           const prxKey = prxKeys[Math.floor(Math.random() * prxKeys.length)];
-          const kvPrx = await getKVPrxList();
+          const kvPrx = await getKVPrxList(env.KV_PROXY_URL || KV_PRX_URL);
 
           const candidates = kvPrx?.[prxKey];
           if (!Array.isArray(candidates) || candidates.length === 0) return new Response("No proxy available for requested country", { status: 404 });
           const requestPrxIP = candidates[Math.floor(Math.random() * candidates.length)];
-          return await websocketHandler(request, requestPrxIP);
+          return await websocketHandler(request, requestPrxIP, env.VMESS_UUID || DEFAULT_VMESS_UUID);
         } else if (prxMatch) {
           const requestPrxIP = prxMatch[1];
-          return await websocketHandler(request, requestPrxIP);
+          return await websocketHandler(request, requestPrxIP, env.VMESS_UUID || DEFAULT_VMESS_UUID);
         }
       }
 
@@ -224,6 +251,10 @@ export default {
             });
 
           const uuid = crypto.randomUUID();
+          const vmessUUID = env.VMESS_UUID || DEFAULT_VMESS_UUID;
+          if (filterVPN.includes(atob(flash)) && !/^[0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12}$/i.test(vmessUUID)) {
+            return new Response("VMESS_UUID must be a valid UUID", { status: 500, headers: CORS_HEADER_OPTIONS });
+          }
           const result = [];
           for (const prx of prxList) {
             const uri = new URL(`${atob(horse)}://${fillerDomain}`);
@@ -246,7 +277,7 @@ export default {
                     };host=${appDomain}`,
                   );
                 } else {
-                  uri.username = uuid;
+                  uri.username = protocol === atob(flash) ? vmessUUID : uuid;
                 }
 
                 uri.searchParams.set("security", port == 443 ? "tls" : "none");
@@ -300,7 +331,7 @@ export default {
               ...CORS_HEADER_OPTIONS,
             },
           });
-        } else if (apiPath.startsWith("/myip")) {
+        } else if (apiPath === "/myip" || apiPath.startsWith("/myip/")) {
           return new Response(
             JSON.stringify({
               ip:
@@ -333,7 +364,7 @@ export default {
   },
 };
 
-async function websocketHandler(request, requestPrxIP = "") {
+async function websocketHandler(request, requestPrxIP = "", vmessUUID = DEFAULT_VMESS_UUID) {
   const webSocketPair = new WebSocketPair();
   const [client, webSocket] = Object.values(webSocketPair);
 
@@ -370,8 +401,7 @@ async function websocketHandler(request, requestPrxIP = "") {
           }
           if (remoteSocketWrapper.value) {
             const writer = remoteSocketWrapper.value.writable.getWriter();
-            await writer.write(chunk);
-            writer.releaseLock();
+            try { await writer.write(chunk); } finally { writer.releaseLock(); }
             return;
           }
 
@@ -381,7 +411,7 @@ async function websocketHandler(request, requestPrxIP = "") {
           if (protocol === atob(horse)) {
             protocolHeader = readHorseHeader(chunk);
           } else if (protocol === atob(flash)) {
-            protocolHeader = await readStreamHeader(chunk);
+            protocolHeader = await readStreamHeader(chunk, vmessUUID);
           } else if (protocol === atob(neko)) {
             protocolHeader = readNekoHeader(chunk);
           } else if (protocol === "ss") {
@@ -432,7 +462,7 @@ async function websocketHandler(request, requestPrxIP = "") {
             );
           }
 
-          handleTCPOutBound(
+          await handleTCPOutBound(
             remoteSocketWrapper,
             protocolHeader.addressRemote,
             protocolHeader.portRemote,
@@ -497,8 +527,7 @@ async function protocolSniffer(buffer) {
       return "ss";
     }
 
-    // Otherwise, assume it's VMess AEAD
-    return atob(flash);
+    // Otherwise, assume it's VMess AEAD    return atob(flash);
   }
 
   return "ss"; // default
@@ -776,12 +805,12 @@ async function aesGcmEncrypt(key, nonce, data, aad) {
 }
 
 // Stream Protocol Handler
-async function readStreamHeader(buffer) {
+async function readStreamHeader(buffer, uuidString = DEFAULT_VMESS_UUID) {
   try {
     if (!buffer || buffer.byteLength < 60) return { hasError: true, message: "Incomplete VMess AEAD header" };
-    // For simplicity, we'll use a fixed UUID for decryption
-    // In production, this should be configured
-    const uuidString = "00000000-0000-0000-0000-000000000000";
+    if (!/^[0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12}$/i.test(uuidString)) {
+      return { hasError: true, message: "Invalid VMess UUID configuration" };
+    }
     const uuidBytes = new Uint8Array(
       uuidString
         .replace(/-/g, "")
@@ -824,10 +853,6 @@ async function readStreamHeader(buffer) {
     // Decrypt header payload (AAD is authId)
     const headerPayload = await aesGcmDecrypt(payloadKey, payloadIv, encryptedHeader, authId);
 
-    // Debug logging
-    console.log("Header payload length:", headerPayload.length);
-    console.log("Header payload (hex):", arrayBufferToHex(headerPayload.buffer));
-
     // Parse decrypted header - following exact Rust implementation order
     if (headerPayload.byteLength < 41) return { hasError: true, message: "VMess header payload is too short" };
     const view = new DataView(headerPayload.buffer, headerPayload.byteOffset, headerPayload.byteLength);
@@ -860,7 +885,8 @@ async function readStreamHeader(buffer) {
     const cmd = view.getUint8(offset);
     offset += 1;
     console.log("[37] Command:", cmd, "| offset now:", offset);
-    const isUDP = cmd !== 0x01;
+    if (cmd !== 0x01 && cmd !== 0x02) return { hasError: true, message: "Unsupported VMess command: " + cmd };
+    const isUDP = cmd === 0x02;
 
     // Port (2 bytes, big-endian)
     const portRemote = view.getUint16(offset, false);
@@ -997,8 +1023,7 @@ function readNekoHeader(buffer) {
   } else if (cmd === 2) {
     isUDP = true;
   } else {
-    return {
-      hasError: true,
+    return {      hasError: true,
       message: `command ${cmd} is not supported`,
     };
   }
