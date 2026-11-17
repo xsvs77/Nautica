@@ -96,6 +96,8 @@ Setelah mengatur variabel/secret, deploy Worker. Tidak ada langkah aktivasi API 
 - Jangan memasukkan kredensial atau data sensitif ke koneksi melalui proxy publik.
 - Jika tidak mengatur `PROXY_BANK_URL` atau `KV_PROXY_URL`, Worker mengambil daftar default dari repository `xsvs77/Nautica`.
 - Pastikan URL daftar proxy khusus menggunakan HTTPS (Proxy Bank juga menerima HTTP untuk kompatibilitas, tetapi HTTPS lebih disarankan).
+- Beberapa fitur bergantung pada layanan pihak ketiga bawaan: halaman subscription `foolvpn.web.id`, converter `api.foolvpn.web.id`, pemeriksaan proxy `id1.foolvpn.web.id`, dan UDP relay `udp-relay.hobihaus.space:7300`. Jika layanan tersebut berubah atau tidak tersedia, fitur terkait dapat gagal meskipun Worker berhasil deploy.
+- Cloudflare membatasi koneksi TCP keluar ke alamat IP Cloudflare, alamat privat/loopback, dan port SMTP 25. Batas akun Free juga mencakup CPU 10 ms per request dan maksimal enam koneksi keluar yang sedang menunggu koneksi awal. Ini adalah batas platform, bukan bug yang bisa dihilangkan oleh kode Worker.
 
 # Endpoint
 
