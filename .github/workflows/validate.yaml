@@ -19,3 +19,5 @@ jobs:
       - uses: oven-sh/setup-bun@v2
       - name: Build Worker syntax
         run: bun build _worker.js --target=bun --external cloudflare:sockets --outfile=/tmp/nautica-worker.js
+      - name: Validate proxy bank script
+        run: python3 -m py_compile scripts/update_proxy_bank.py
