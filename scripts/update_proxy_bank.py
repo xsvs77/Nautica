@@ -28,7 +28,10 @@ def fetch_json(url):
     with urllib.request.urlopen(request, timeout=15) as response:
         if response.status != 200:
             raise RuntimeError(f"Feed returned HTTP {response.status}: {url}")
-        return json.loads(response.read().decode("utf-8"))
+        raw = response.read(4 * 1024 * 1024 + 1)
+        if len(raw) > 4 * 1024 * 1024:
+            raise RuntimeError("Feed response exceeds 4 MiB limit")
+        return json.loads(raw.decode("utf-8"))
 
 
 def extract_candidates(source_name, payload):
@@ -50,7 +53,7 @@ def extract_candidates(source_name, payload):
             continue
         candidates.append({
             "ip": ip, "port": port, "source": source_name,
-            "isp": str(row.get("isp") or row.get("asn") or source_name).replace(",", " ").strip(),
+            "isp": " ".join(str(row.get("isp") or row.get("asn") or source_name).replace(",", " ").split())[:120],
         })
     return candidates[:MAX_CANDIDATES_PER_SOURCE]
 
@@ -116,7 +119,8 @@ def main():
                 result = {"online": False, "latency_ms": None}
             key = f"{candidate['ip']}:{candidate['port']}"
             old = previous.get(key, {})
-            history = list(old.get("history", []))
+            old_history = old.get("history", [])
+            history = [value is True for value in old_history if isinstance(value, bool)] if isinstance(old_history, list) else []
             history.append(bool(result and result["online"]))
             history = history[-HISTORY_SIZE:]
             success_count = sum(history)
