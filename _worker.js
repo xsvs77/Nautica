@@ -235,7 +235,7 @@ export default {
           if (filterVPN.some((p) => !PROTOCOLS.includes(p))) return new Response("Unsupported VPN protocol", { status: 400, headers: CORS_HEADER_OPTIONS });
 
           // Only allow operator-configured proxy bank URLs; never fetch arbitrary user-supplied URLs.
-          const prxBankUrl = env.PROXY_BANK_URL || env.PRX_BANK_URL;
+          const prxBankUrl = env.PROXY_BANK_URL || env.PRX_BANK_URL || PRX_BANK_URL;
           const prxList = await getPrxList(prxBankUrl)
             .then((prxs) => {
               // Filter CC
