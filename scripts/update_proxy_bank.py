@@ -1,16 +1,12 @@
 #!/usr/bin/env python3
-"""Build Nautica's Indonesia HTTP CONNECT proxy bank from public feeds.
-
-Only candidates labelled Indonesia by a source are considered. Each candidate
-must then pass an HTTPS request through the proxy and report country_code=ID.
-No proxy credentials or user traffic are used.
-"""
+"""Collect, verify, rank and track public Indonesian HTTP CONNECT proxies."""
 import concurrent.futures
 import ipaddress
 import json
 import time
 import urllib.error
 import urllib.request
+from datetime import datetime, timezone
 from pathlib import Path
 
 SOURCES = (
@@ -18,13 +14,17 @@ SOURCES = (
     ("ProxMint", "https://raw.githubusercontent.com/proxmint/free-proxy-list/main/proxies/all.json"),
 )
 OUTPUT = Path("proxyList-ID.txt")
-MAX_CANDIDATES_PER_SOURCE = 50
+METRICS = Path("proxyList-ID-metrics.json")
+MAX_CANDIDATES_PER_SOURCE = 80
 MAX_OUTPUT = 60
-TIMEOUT_SECONDS = 7
+HISTORY_SIZE = 48  # 24 hours when refreshed every 30 minutes
+TIMEOUT_SECONDS = 5
+WORKERS = 30
+USER_AGENT = "Nautica-ProxyBank/2.0"
 
 
 def fetch_json(url):
-    request = urllib.request.Request(url, headers={"User-Agent": "Nautica-ProxyBank/1.0"})
+    request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
     with urllib.request.urlopen(request, timeout=15) as response:
         if response.status != 200:
             raise RuntimeError(f"Feed returned HTTP {response.status}: {url}")
@@ -38,9 +38,7 @@ def extract_candidates(source_name, payload):
         if not isinstance(row, dict):
             continue
         country = str(row.get("country_code") or row.get("country") or "").strip().upper()
-        if country not in ("ID", "INDONESIA"):
-            continue
-        if str(row.get("protocol", "")).lower() != "http":
+        if country not in ("ID", "INDONESIA") or str(row.get("protocol", "")).lower() != "http":
             continue
         ip = str(row.get("ip", "")).strip()
         try:
@@ -51,13 +49,9 @@ def extract_candidates(source_name, payload):
         if address.version != 4 or not address.is_global or not 1 <= port <= 65535:
             continue
         candidates.append({
-            "ip": ip,
-            "port": port,
-            "source": source_name,
-            "latency": float(row.get("latency_ms") or row.get("latencyMs") or 999999),
+            "ip": ip, "port": port, "source": source_name,
             "isp": str(row.get("isp") or row.get("asn") or source_name).replace(",", " ").strip(),
         })
-    candidates.sort(key=lambda item: item["latency"])
     return candidates[:MAX_CANDIDATES_PER_SOURCE]
 
 
@@ -68,7 +62,7 @@ def verify_proxy(candidate):
     )
     request = urllib.request.Request(
         "https://ipwho.is/?fields=success,country_code",
-        headers={"User-Agent": "Nautica-ProxyBank/1.0"},
+        headers={"User-Agent": USER_AGENT},
     )
     started = time.monotonic()
     try:
@@ -78,42 +72,91 @@ def verify_proxy(candidate):
             result = json.loads(response.read(4096).decode("utf-8"))
         elapsed_ms = round((time.monotonic() - started) * 1000)
         if result.get("success") is True and str(result.get("country_code", "")).upper() == "ID":
-            return (candidate["ip"], candidate["port"], "ID",
-                    f"{candidate['source']} {candidate['isp']}"[:100], elapsed_ms)
+            return {"online": True, "latency_ms": elapsed_ms}
     except (OSError, ValueError, urllib.error.URLError, TimeoutError):
-        return None
-    return None
+        pass
+    return {"online": False, "latency_ms": None}
+
+
+def load_previous():
+    try:
+        data = json.loads(METRICS.read_text(encoding="utf-8"))
+        return {f"{p['ip']}:{p['port']}": p for p in data.get("proxies", [])}
+    except (OSError, ValueError, KeyError, TypeError):
+        return {}
 
 
 def main():
+    checked_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
     candidates = []
     for source_name, url in SOURCES:
         try:
-            candidates.extend(extract_candidates(source_name, fetch_json(url)))
-            print(f"{source_name}: candidates loaded")
+            loaded = extract_candidates(source_name, fetch_json(url))
+            candidates.extend(loaded)
+            print(f"{source_name}: {len(loaded)} Indonesian HTTP candidates loaded")
         except Exception as exc:
             print(f"{source_name}: feed unavailable: {exc}")
 
     unique = {}
     for candidate in candidates:
         unique[(candidate["ip"], candidate["port"])] = candidate
-    candidates = sorted(unique.values(), key=lambda item: item["latency"])
+    candidates = list(unique.values())
+    if not candidates:
+        raise SystemExit("No Indonesian candidates loaded; preserving previous proxy bank.")
 
-    verified = []
-    with concurrent.futures.ThreadPoolExecutor(max_workers=12) as pool:
-        futures = [pool.submit(verify_proxy, item) for item in candidates]
-        for future in concurrent.futures.as_completed(futures):
-            result = future.result()
-            if result:
-                verified.append(result)
+    previous = load_previous()
+    results = {}
+    with concurrent.futures.ThreadPoolExecutor(max_workers=WORKERS) as pool:
+        future_map = {pool.submit(verify_proxy, item): item for item in candidates}
+        for future in concurrent.futures.as_completed(future_map):
+            candidate = future_map[future]
+            try:
+                result = future.result()
+            except Exception:
+                result = {"online": False, "latency_ms": None}
+            key = f"{candidate['ip']}:{candidate['port']}"
+            old = previous.get(key, {})
+            history = list(old.get("history", []))
+            history.append(bool(result and result["online"]))
+            history = history[-HISTORY_SIZE:]
+            success_count = sum(history)
+            uptime = round(100 * success_count / len(history), 1) if history else 0.0
+            results[key] = {
+                "ip": candidate["ip"], "port": candidate["port"],
+                "country": "ID", "source": candidate["source"],
+                "isp": candidate["isp"],
+                "online": bool(result and result["online"]),
+                "latency_ms": result["latency_ms"] if result else None,
+                "uptime_percent": uptime,
+                "checks": len(history), "history": history,
+                "last_checked": checked_at,
+            }
 
-    verified.sort(key=lambda item: item[4])
-    verified = verified[:MAX_OUTPUT]
-    lines = [f"{ip},{port},{country},{org}" for ip, port, country, org, _ in verified]
-    OUTPUT.write_text("\n".join(lines) + ("\n" if lines else ""), encoding="utf-8")
-    print(f"Verified Indonesian HTTP CONNECT proxies: {len(lines)}")
-    if not lines:
-        raise SystemExit("No proxy passed the live Indonesia exit-IP check; empty bank written.")
+    active = [p for p in results.values() if p["online"]]
+    # Rank by reliability first, then current measured latency.
+    active.sort(key=lambda p: (-p["uptime_percent"], p["latency_ms"] or 999999))
+    active = active[:MAX_OUTPUT]
+    if not active:
+        raise SystemExit("No proxy passed live verification; preserving previous proxy bank.")
+
+    lines = [f"{p['ip']},{p['port']},ID,{p['isp']} | {p['latency_ms']}ms | uptime {p['uptime_percent']}%" for p in active]
+    OUTPUT.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    metrics = {
+        "checked_at": checked_at,
+        "refresh_interval_minutes": 30,
+        "history_window_hours": 24,
+        "candidate_count": len(candidates),
+        "verified_count": len(active),
+        "proxies": sorted(results.values(), key=lambda p: (
+            not p["online"], -p["uptime_percent"], p["latency_ms"] or 999999
+        )),
+    }
+    METRICS.write_text(json.dumps(metrics, indent=2) + "\n", encoding="utf-8")
+    print(f"Candidates checked: {len(candidates)}")
+    print(f"Verified Indonesian HTTP CONNECT proxies: {len(active)}")
+    print("Ranking: uptime (24h rolling) first, then current latency.")
+    for proxy in active[:10]:
+        print(f"  {proxy['ip']}:{proxy['port']} - {proxy['latency_ms']} ms, uptime {proxy['uptime_percent']}%")
 
 
 if __name__ == "__main__":
