@@ -133,6 +133,7 @@ def main():
             }
 
     active = [p for p in results.values() if p["online"]]
+    verified_count = len(active)
     # Rank by reliability first, then current measured latency.
     active.sort(key=lambda p: (-p["uptime_percent"], p["latency_ms"] or 999999))
     active = active[:MAX_OUTPUT]
@@ -146,14 +147,16 @@ def main():
         "refresh_interval_minutes": 30,
         "history_window_hours": 24,
         "candidate_count": len(candidates),
-        "verified_count": len(active),
+        "verified_count": verified_count,
+        "output_count": len(active),
         "proxies": sorted(results.values(), key=lambda p: (
             not p["online"], -p["uptime_percent"], p["latency_ms"] or 999999
         )),
     }
     METRICS.write_text(json.dumps(metrics, indent=2) + "\n", encoding="utf-8")
     print(f"Candidates checked: {len(candidates)}")
-    print(f"Verified Indonesian HTTP CONNECT proxies: {len(active)}")
+    print(f"Verified Indonesian HTTP CONNECT proxies: {verified_count}")
+    print(f"Published to proxy bank (max {MAX_OUTPUT}): {len(active)}")
     print("Ranking: uptime (24h rolling) first, then current latency.")
     for proxy in active[:10]:
         print(f"  {proxy['ip']}:{proxy['port']} - {proxy['latency_ms']} ms, uptime {proxy['uptime_percent']}%")
