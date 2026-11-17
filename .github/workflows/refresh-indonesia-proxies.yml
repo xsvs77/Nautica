@@ -29,8 +29,8 @@ jobs:
         run: python3 scripts/update_proxy_bank.py
       - name: Commit updated proxy bank
         run: |
-          if git diff --quiet -- proxyList-ID.txt; then
-            echo "Proxy bank unchanged."
+          if git diff --quiet -- proxyList-ID.txt proxyList-ID-metrics.json; then
+            echo "Proxy bank and metrics unchanged."
             exit 0
           fi
           git config user.name "github-actions[bot]"
