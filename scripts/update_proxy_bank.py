@@ -120,14 +120,39 @@ def main():
         except Exception as exc:
             print(f"{source_name}: feed unavailable: {exc}")
 
+    previous = load_previous()
+    # Recheck previously working proxies even when upstream feeds temporarily
+    # omit them. This lets their reliability history mature across refreshes.
+    historical = [
+        p for p in previous.values()
+        if isinstance(p, dict) and p.get("online") is True
+    ]
+    historical.sort(key=lambda p: (
+        -float(p.get("reliability_score") or 0),
+        -int(p.get("checks") or 0),
+        int(p.get("latency_ms") or 999999),
+    ))
+    retained = []
+    for p in historical[:MAX_OUTPUT]:
+        try:
+            address = ipaddress.ip_address(str(p.get("ip", "")).strip())
+            port = int(p.get("port"))
+        except (ValueError, TypeError):
+            continue
+        if address.version != 4 or not address.is_global or not 1 <= port <= 65535:
+            continue
+        retained.append({
+            "ip": str(address), "port": port, "source": "history",
+            "isp": " ".join(str(p.get("isp") or "previously verified").replace(",", " ").split())[:120],
+        })
+
     unique = {}
-    for candidate in candidates:
+    for candidate in retained + candidates:
         unique[(candidate["ip"], candidate["port"])] = candidate
     candidates = list(unique.values())
     if not candidates:
         raise SystemExit("No Indonesian candidates loaded; preserving previous proxy bank.")
 
-    previous = load_previous()
     results = {}
     with concurrent.futures.ThreadPoolExecutor(max_workers=WORKERS) as pool:
         future_map = {pool.submit(verify_proxy, item): item for item in candidates}
@@ -189,10 +214,11 @@ def main():
         )),
     }
     METRICS.write_text(json.dumps(metrics, indent=2) + "\n", encoding="utf-8")
-    print(f"Candidates checked: {len(candidates)}")
+    print(f"Candidates checked (feeds + retained online history): {len(candidates)}")
     print(f"Verified Indonesian HTTP CONNECT proxies: {verified_count}")
     print(f"Published to proxy bank (max {MAX_OUTPUT}): {len(active)}")
     print("Verification: both ipwho.is and Cloudflare trace must confirm an Indonesian exit.")
+    print(f"Previously online proxies retained for rechecking: {len(retained)}")
     print("Ranking: smoothed reliability (24h history), observation count, then average two-target latency.")
     for proxy in active[:10]:
         print(f"  {proxy['ip']}:{proxy['port']} - {proxy['latency_ms']} ms, uptime {proxy['uptime_percent']}%")
