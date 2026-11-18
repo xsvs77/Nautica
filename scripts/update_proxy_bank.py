@@ -125,6 +125,11 @@ def main():
             history = history[-HISTORY_SIZE:]
             success_count = sum(history)
             uptime = round(100 * success_count / len(history), 1) if history else 0.0
+            # Bayesian smoothing prevents a proxy with only one successful check
+            # from tying an established proxy with a longer clean history.
+            reliability_score = round(
+                100 * (success_count + 1) / (len(history) + 2), 1
+            ) if history else 0.0
             results[key] = {
                 "ip": candidate["ip"], "port": candidate["port"],
                 "country": "ID", "source": candidate["source"],
@@ -132,6 +137,7 @@ def main():
                 "online": bool(result and result["online"]),
                 "latency_ms": result["latency_ms"] if result else None,
                 "uptime_percent": uptime,
+                "reliability_score": reliability_score,
                 "checks": len(history), "history": history,
                 "last_checked": checked_at,
             }
@@ -139,7 +145,10 @@ def main():
     active = [p for p in results.values() if p["online"]]
     verified_count = len(active)
     # Rank by reliability first, then current measured latency.
-    active.sort(key=lambda p: (-p["uptime_percent"], p["latency_ms"] or 999999))
+    active.sort(key=lambda p: (
+        -p["reliability_score"], -p["checks"],
+        p["latency_ms"] if p["latency_ms"] is not None else 999999
+    ))
     active = active[:MAX_OUTPUT]
     if not active:
         raise SystemExit("No proxy passed live verification; preserving previous proxy bank.")
@@ -154,14 +163,15 @@ def main():
         "verified_count": verified_count,
         "output_count": len(active),
         "proxies": sorted(results.values(), key=lambda p: (
-            not p["online"], -p["uptime_percent"], p["latency_ms"] or 999999
+            not p["online"], -p["reliability_score"], -p["checks"],
+            p["latency_ms"] if p["latency_ms"] is not None else 999999
         )),
     }
     METRICS.write_text(json.dumps(metrics, indent=2) + "\n", encoding="utf-8")
     print(f"Candidates checked: {len(candidates)}")
     print(f"Verified Indonesian HTTP CONNECT proxies: {verified_count}")
     print(f"Published to proxy bank (max {MAX_OUTPUT}): {len(active)}")
-    print("Ranking: uptime (24h rolling) first, then current latency.")
+    print("Ranking: smoothed reliability (24h history), observation count, then current latency.")
     for proxy in active[:10]:
         print(f"  {proxy['ip']}:{proxy['port']} - {proxy['latency_ms']} ms, uptime {proxy['uptime_percent']}%")
 
