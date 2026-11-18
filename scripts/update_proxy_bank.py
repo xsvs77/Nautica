@@ -59,26 +59,46 @@ def extract_candidates(source_name, payload):
 
 
 def verify_proxy(candidate):
+    """Require two independent HTTPS checks to confirm an Indonesian exit."""
     proxy = f"http://{candidate['ip']}:{candidate['port']}"
     opener = urllib.request.build_opener(
         urllib.request.ProxyHandler({"http": proxy, "https": proxy})
     )
-    request = urllib.request.Request(
-        "https://ipwho.is/?fields=success,country_code",
-        headers={"User-Agent": USER_AGENT},
+    checks = (
+        ("ipwho", "https://ipwho.is/?fields=success,country_code"),
+        ("cloudflare", "https://www.cloudflare.com/cdn-cgi/trace"),
     )
-    started = time.monotonic()
-    try:
-        with opener.open(request, timeout=TIMEOUT_SECONDS) as response:
-            if response.status != 200:
-                return None
-            result = json.loads(response.read(4096).decode("utf-8"))
-        elapsed_ms = round((time.monotonic() - started) * 1000)
-        if result.get("success") is True and str(result.get("country_code", "")).upper() == "ID":
-            return {"online": True, "latency_ms": elapsed_ms}
-    except (OSError, ValueError, urllib.error.URLError, TimeoutError):
-        pass
-    return {"online": False, "latency_ms": None}
+    latencies = []
+    for name, url in checks:
+        request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+        started = time.monotonic()
+        try:
+            with opener.open(request, timeout=TIMEOUT_SECONDS) as response:
+                if response.status != 200:
+                    return {"online": False, "latency_ms": None, "checks_passed": 0}
+                body = response.read(8192).decode("utf-8", errors="replace")
+            elapsed_ms = round((time.monotonic() - started) * 1000)
+            if name == "ipwho":
+                result = json.loads(body)
+                passed = (
+                    result.get("success") is True
+                    and str(result.get("country_code", "")).upper() == "ID"
+                )
+            else:
+                fields = dict(
+                    line.split("=", 1) for line in body.splitlines() if "=" in line
+                )
+                passed = fields.get("loc", "").upper() == "ID"
+            if not passed:
+                return {"online": False, "latency_ms": None, "checks_passed": len(latencies)}
+            latencies.append(elapsed_ms)
+        except (OSError, ValueError, urllib.error.URLError, TimeoutError):
+            return {"online": False, "latency_ms": None, "checks_passed": len(latencies)}
+    return {
+        "online": True,
+        "latency_ms": round(sum(latencies) / len(latencies)),
+        "checks_passed": len(latencies),
+    }
 
 
 def load_previous():
@@ -136,6 +156,7 @@ def main():
                 "isp": candidate["isp"],
                 "online": bool(result and result["online"]),
                 "latency_ms": result["latency_ms"] if result else None,
+                "endpoint_checks_passed": result.get("checks_passed", 0) if result else 0,
                 "uptime_percent": uptime,
                 "reliability_score": reliability_score,
                 "checks": len(history), "history": history,
@@ -171,7 +192,8 @@ def main():
     print(f"Candidates checked: {len(candidates)}")
     print(f"Verified Indonesian HTTP CONNECT proxies: {verified_count}")
     print(f"Published to proxy bank (max {MAX_OUTPUT}): {len(active)}")
-    print("Ranking: smoothed reliability (24h history), observation count, then current latency.")
+    print("Verification: both ipwho.is and Cloudflare trace must confirm an Indonesian exit.")
+    print("Ranking: smoothed reliability (24h history), observation count, then average two-target latency.")
     for proxy in active[:10]:
         print(f"  {proxy['ip']}:{proxy['port']} - {proxy['latency_ms']} ms, uptime {proxy['uptime_percent']}%")
 
