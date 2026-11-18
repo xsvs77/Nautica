@@ -15,6 +15,7 @@ const SUB_PAGE_URL = "https://foolvpn.web.id/nautica";
 const KV_PRX_URL = "https://raw.githubusercontent.com/xsvs77/Nautica/main/kvProxyList.json";
 const DEFAULT_VMESS_UUID = "00000000-0000-0000-0000-000000000000";
 const PRX_BANK_URL = "https://raw.githubusercontent.com/xsvs77/Nautica/main/proxyList-ID.txt";
+const PRX_METRICS_URL = "https://raw.githubusercontent.com/xsvs77/Nautica/main/proxyList-ID-metrics.json";
 const DNS_SERVER_ADDRESS = "8.8.8.8";
 const DNS_SERVER_PORT = 53;
 const RELAY_SERVER_UDP = {
@@ -160,14 +161,18 @@ h1{font-size:27px;margin:8px 0}.desc{color:var(--muted);line-height:1.6;margin:0
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.field label{display:block;font-size:12px;color:var(--muted);margin:0 0 6px}
 select,input,button,textarea{font:inherit;border-radius:10px}select,input{width:100%;padding:11px;background:#0b1422;color:var(--text);border:1px solid var(--line)}
 .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}button{border:0;padding:11px 16px;font-weight:700;cursor:pointer;background:var(--accent);color:#06251b}button.secondary{background:#26364d;color:var(--text)}
+.tabs{display:flex;gap:8px;margin:18px 0 0}.tab{flex:1;background:#1a293c;color:var(--muted);border:1px solid var(--line)}.tab.active{background:var(--accent);color:#06251b}
+.panel[hidden]{display:none}.live-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:14px 0}.live-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.stat{padding:12px;background:#0b1422;border:1px solid var(--line);border-radius:12px}.stat b{display:block;font-size:20px;color:var(--accent)}.stat span{font-size:11px;color:var(--muted)}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;margin-top:14px}table{width:100%;border-collapse:collapse;min-width:510px;font-size:13px}th,td{text-align:left;padding:11px 10px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-size:11px;text-transform:uppercase}tr:last-child td{border-bottom:0}.ip{font:12px ui-monospace,monospace;color:#d7e7f7}.badge{display:inline-block;padding:4px 7px;border-radius:20px;background:#123c32;color:var(--accent);font-size:11px}.latency{font-weight:700}.live-muted{color:var(--muted);font-size:12px}
 #status{margin:16px 0 8px;color:var(--muted);min-height:22px}textarea{width:100%;min-height:260px;resize:vertical;padding:13px;background:#08111d;color:#d7e7f7;border:1px solid var(--line);font:12px ui-monospace,SFMono-Regular,monospace;line-height:1.55}
 .note{font-size:12px;color:var(--muted);line-height:1.6;margin-top:14px}.count{color:var(--accent);font-weight:700}
-@media(max-width:520px){.grid{grid-template-columns:1fr}.card{padding:17px}h1{font-size:23px}}
+@media(max-width:520px){.grid{grid-template-columns:1fr}.card{padding:17px}h1{font-size:23px}.stat{padding:9px}.stat b{font-size:17px}}
 </style>
 </head>
 <body><main>
 <div class="brand">NAUTICA / INDONESIA</div>
-<section class="card">
+<div class="tabs" role="tablist" aria-label="Menu Nautica"><button class="tab active" id="tab-sub" role="tab" aria-selected="true">Subscription</button><button class="tab" id="tab-live" role="tab" aria-selected="false">Live Proxy</button></div>
+<section class="card panel" id="panel-sub">
 <h1>Proxy Subscription</h1>
 <p class="desc">Buat dan salin konfigurasi proxy langsung dari Worker Nautica. Pilih protokol dan port, lalu muat daftar terbaru.</p>
 <div class="grid">
@@ -180,12 +185,52 @@ select,input,button,textarea{font:inherit;border-radius:10px}select,input{width:
 <div id="status" role="status">Siap. Tekan “Muat konfigurasi”.</div>
 <textarea id="output" spellcheck="false" placeholder="Konfigurasi akan muncul di sini..." readonly></textarea>
 <p class="note">Catatan: daftar yang tampil berasal dari bank proxy yang tersedia. Munculnya konfigurasi tidak menjamin setiap proxy selalu aktif. Uji koneksi sebelum digunakan.</p>
+</section>
+<section class="card panel" id="panel-live" hidden>
+<h1>Live Proxy</h1>
+<p class="desc">Daftar proxy Indonesia yang lolos pemeriksaan terakhir Nautica, lengkap dengan alamat, port, latensi, dan reliabilitas.</p>
+<div class="live-head"><span id="live-status" class="live-muted">Memuat status proxy…</span><button id="live-refresh" class="secondary">↻ Perbarui</button></div>
+<div class="live-stats"><div class="stat"><b id="live-count">—</b><span>Proxy online</span></div><div class="stat"><b id="live-fast">—</b><span>Tercepat</span></div><div class="stat"><b id="live-checked">—</b><span>Terakhir diperiksa</span></div></div>
+<div class="table-wrap"><table><thead><tr><th>Alamat proxy</th><th>Latensi</th><th>Uptime</th><th>Reliabilitas</th><th>Status</th></tr></thead><tbody id="live-rows"><tr><td colspan="5" class="live-muted">Memuat data…</td></tr></tbody></table></div>
+<p class="note">Latensi adalah hasil pengukuran dari server scanner Nautica ke dua endpoint HTTPS, bukan ping langsung dari perangkat Anda. Data diperbarui otomatis oleh GitHub Actions setiap sekitar 30 menit. Gunakan proxy publik dengan risiko sendiri.</p>
 </section></main>
 <script>
 (function(){
  const $=function(id){return document.getElementById(id)};
  const output=$('output'),status=$('status'),copy=$('copy'),download=$('download'),load=$('load');
  function setStatus(message){status.textContent=message}
+ const tabSub=$('tab-sub'),tabLive=$('tab-live'),panelSub=$('panel-sub'),panelLive=$('panel-live');
+ let liveLoaded=false;
+ function showPanel(which){
+  const live=which==='live';
+  panelSub.hidden=live;panelLive.hidden=!live;
+  tabSub.classList.toggle('active',!live);tabLive.classList.toggle('active',live);
+  tabSub.setAttribute('aria-selected',String(!live));tabLive.setAttribute('aria-selected',String(live));
+  if(live&&!liveLoaded)loadLive();
+ }
+ tabSub.addEventListener('click',()=>showPanel('sub'));
+ tabLive.addEventListener('click',()=>showPanel('live'));
+ function fmtTime(value){if(!value)return '—';const d=new Date(value);return Number.isNaN(d.getTime())?'—':d.toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'});}
+ function escapeHtml(value){return String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+ async function loadLive(){
+  const liveStatus=$('live-status'),rows=$('live-rows'),refresh=$('live-refresh');
+  refresh.disabled=true;liveStatus.textContent='Mengambil data proxy terbaru…';
+  try{
+   const response=await fetch('/api/v1/proxies/live',{cache:'no-store',headers:{Accept:'application/json'}});
+   const data=await response.json();if(!response.ok)throw new Error(data.error||('HTTP '+response.status));
+   const proxies=Array.isArray(data.proxies)?data.proxies:[];
+   $('live-count').textContent=String(proxies.length);
+   const fastest=proxies.reduce((best,p)=>p.latency_ms!=null&&(!best||p.latency_ms<best.latency_ms)?p:best,null);
+   $('live-fast').textContent=fastest?fastest.latency_ms+' ms':'—';
+   $('live-checked').textContent=fmtTime(data.checked_at);
+   rows.innerHTML=proxies.length?proxies.map(p=>'<tr><td class="ip">'+escapeHtml(p.ip)+':'+Number(p.port)+'</td><td class="latency">'+Number(p.latency_ms).toLocaleString('id-ID')+' ms</td><td>'+Number(p.uptime_percent||0)+'%</td><td>'+Number(p.reliability_score||0)+'/100</td><td><span class="badge">ONLINE</span></td></tr>').join(''):'<tr><td colspan="5" class="live-muted">Belum ada proxy yang lolos pemeriksaan terakhir.</td></tr>';
+   liveStatus.textContent='Pemeriksaan scanner: '+(data.checked_at?new Date(data.checked_at).toLocaleString('id-ID'):'waktu tidak tersedia')+' · '+proxies.length+' proxy aktif';
+   liveLoaded=true;
+  }catch(error){liveStatus.textContent='Gagal memuat data: '+error.message;rows.innerHTML='<tr><td colspan="5" class="live-muted">Tidak dapat mengambil data live proxy.</td></tr>';}
+  finally{refresh.disabled=false}
+ }
+ $('live-refresh').addEventListener('click',loadLive);
+ setInterval(()=>{if(!panelLive.hidden)loadLive()},60000);
  load.addEventListener('click',async function(){
   const limit=Math.max(1,Math.min(100,Number($('limit').value)||30));
   $('limit').value=String(limit);
@@ -261,6 +306,29 @@ export default {
 
       if (url.pathname === "/sub" || url.pathname.startsWith("/sub/")) {
         return subscriptionPage();
+      } else if (url.pathname === "/api/v1/proxies/live" && request.method === "GET") {
+        try {
+          const response = await fetchTextWithTimeout(PRX_METRICS_URL, 8000, 2 * 1024 * 1024);
+          const metrics = JSON.parse(response || "{}");
+          const proxies = (Array.isArray(metrics.proxies) ? metrics.proxies : [])
+            .filter((p) => p && p.online === true && p.endpoint_checks_passed === 2 &&
+              Number.isFinite(Number(p.latency_ms)))
+            .sort((a, b) => Number(a.latency_ms) - Number(b.latency_ms))
+            .slice(0, 60)
+            .map((p) => ({
+              ip: String(p.ip || ""), port: Number(p.port),
+              latency_ms: Number(p.latency_ms), uptime_percent: Number(p.uptime_percent || 0),
+              reliability_score: Number(p.reliability_score || 0), checks: Number(p.checks || 0),
+              source: String(p.source || ""),
+            }));
+          return new Response(JSON.stringify({checked_at:metrics.checked_at||null,refresh_interval_minutes:metrics.refresh_interval_minutes||30,count:proxies.length,proxies}), {
+            headers: {...CORS_HEADER_OPTIONS,"Content-Type":"application/json; charset=UTF-8","Cache-Control":"no-store","X-Content-Type-Options":"nosniff"},
+          });
+        } catch (error) {
+          return new Response(JSON.stringify({error:"Live proxy metrics unavailable"}), {
+            status:502,headers:{...CORS_HEADER_OPTIONS,"Content-Type":"application/json; charset=UTF-8","Cache-Control":"no-store"},
+          });
+        }
       } else if (url.pathname === "/check" || url.pathname.startsWith("/check/")) {
         const target = (url.searchParams.get("target") || "").trim();
         let host = "";
