@@ -1,6 +1,12 @@
 name: Refresh Indonesia Proxy Bank
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - scripts/update_proxy_bank.py
+      - .github/workflows/refresh-indonesia-proxies.yml
   schedule:
     - cron: "17,47 * * * *"
   workflow_dispatch:
