@@ -1,10 +1,10 @@
 {
-  "checked_at": "2026-11-19T18:18:45+00:00",
+  "checked_at": "2026-11-20T00:56:14+00:00",
   "refresh_interval_minutes": 30,
   "history_window_hours": 24,
-  "candidate_count": 154,
-  "verified_count": 33,
-  "output_count": 33,
+  "candidate_count": 178,
+  "verified_count": 27,
+  "output_count": 27,
   "proxies": [
     {
       "ip": "103.130.61.61",
@@ -13,11 +13,11 @@
       "source": "ProxMint",
       "isp": "ProxMint",
       "online": true,
-      "latency_ms": 1038,
+      "latency_ms": 2078,
       "endpoint_checks_passed": 2,
-      "uptime_percent": 90.0,
-      "reliability_score": 83.3,
-      "checks": 10,
+      "uptime_percent": 90.9,
+      "reliability_score": 84.6,
+      "checks": 11,
       "history": [
         true,
         true,
@@ -28,9 +28,10 @@
         true,
         true,
         false,
+        true,
         true
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
       "ip": "103.208.100.69",
@@ -39,52 +40,17 @@
       "source": "ProxMint",
       "isp": "ProxMint",
       "online": true,
-      "latency_ms": 1080,
+      "latency_ms": 2346,
       "endpoint_checks_passed": 2,
       "uptime_percent": 100.0,
-      "reliability_score": 75.0,
-      "checks": 2,
+      "reliability_score": 80.0,
+      "checks": 3,
       "history": [
+        true,
         true,
         true
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "160.191.198.178",
-      "port": 8082,
-      "country": "ID",
-      "source": "ProxMint",
-      "isp": "ProxMint",
-      "online": true,
-      "latency_ms": 1408,
-      "endpoint_checks_passed": 2,
-      "uptime_percent": 100.0,
-      "reliability_score": 75.0,
-      "checks": 2,
-      "history": [
-        true,
-        true
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.69.106.78",
-      "port": 8181,
-      "country": "ID",
-      "source": "ProxMint",
-      "isp": "ProxMint",
-      "online": true,
-      "latency_ms": 1646,
-      "endpoint_checks_passed": 2,
-      "uptime_percent": 100.0,
-      "reliability_score": 75.0,
-      "checks": 2,
-      "history": [
-        true,
-        true
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
       "ip": "160.22.45.22",
@@ -93,16 +59,36 @@
       "source": "ProxMint",
       "isp": "ProxMint",
       "online": true,
-      "latency_ms": 2694,
+      "latency_ms": 2374,
       "endpoint_checks_passed": 2,
       "uptime_percent": 100.0,
-      "reliability_score": 75.0,
-      "checks": 2,
+      "reliability_score": 80.0,
+      "checks": 3,
       "history": [
+        true,
         true,
         true
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "160.191.198.178",
+      "port": 8082,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": true,
+      "latency_ms": 2472,
+      "endpoint_checks_passed": 2,
+      "uptime_percent": 100.0,
+      "reliability_score": 80.0,
+      "checks": 3,
+      "history": [
+        true,
+        true,
+        true
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
       "ip": "103.255.109.166",
@@ -111,86 +97,17 @@
       "source": "ProxMint",
       "isp": "ProxMint",
       "online": true,
-      "latency_ms": 4049,
+      "latency_ms": 3884,
       "endpoint_checks_passed": 2,
       "uptime_percent": 100.0,
-      "reliability_score": 75.0,
-      "checks": 2,
+      "reliability_score": 80.0,
+      "checks": 3,
       "history": [
+        true,
         true,
         true
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.171.182.80",
-      "port": 8080,
-      "country": "ID",
-      "source": "history",
-      "isp": "PT Hayat Teknologi Informatika",
-      "online": true,
-      "latency_ms": 4691,
-      "endpoint_checks_passed": 2,
-      "uptime_percent": 100.0,
-      "reliability_score": 75.0,
-      "checks": 2,
-      "history": [
-        true,
-        true
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "160.22.222.135",
-      "port": 8097,
-      "country": "ID",
-      "source": "history",
-      "isp": "PT Juara Network Tegal",
-      "online": true,
-      "latency_ms": 5866,
-      "endpoint_checks_passed": 2,
-      "uptime_percent": 100.0,
-      "reliability_score": 75.0,
-      "checks": 2,
-      "history": [
-        true,
-        true
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.156.75.243",
-      "port": 3125,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "PT Trika Global Media",
-      "online": true,
-      "latency_ms": 1062,
-      "endpoint_checks_passed": 2,
-      "uptime_percent": 100.0,
-      "reliability_score": 66.7,
-      "checks": 1,
-      "history": [
-        true
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.156.249.112",
-      "port": 8085,
-      "country": "ID",
-      "source": "ProxMint",
-      "isp": "ProxMint",
-      "online": true,
-      "latency_ms": 1112,
-      "endpoint_checks_passed": 2,
-      "uptime_percent": 100.0,
-      "reliability_score": 66.7,
-      "checks": 1,
-      "history": [
-        true
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
       "ip": "103.147.134.99",
@@ -199,202 +116,34 @@
       "source": "ProxMint",
       "isp": "ProxMint",
       "online": true,
-      "latency_ms": 1226,
+      "latency_ms": 837,
       "endpoint_checks_passed": 2,
       "uptime_percent": 100.0,
-      "reliability_score": 66.7,
-      "checks": 1,
+      "reliability_score": 75.0,
+      "checks": 2,
       "history": [
+        true,
         true
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
-      "ip": "103.70.122.90",
+      "ip": "103.156.249.112",
       "port": 8085,
       "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "PT Menara Digital Salama",
-      "online": true,
-      "latency_ms": 1810,
-      "endpoint_checks_passed": 2,
-      "uptime_percent": 100.0,
-      "reliability_score": 66.7,
-      "checks": 1,
-      "history": [
-        true
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.175.241.14",
-      "port": 8082,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "LDP",
-      "online": true,
-      "latency_ms": 2172,
-      "endpoint_checks_passed": 2,
-      "uptime_percent": 100.0,
-      "reliability_score": 66.7,
-      "checks": 1,
-      "history": [
-        true
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.156.17.40",
-      "port": 8085,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "RSTNET",
-      "online": true,
-      "latency_ms": 2510,
-      "endpoint_checks_passed": 2,
-      "uptime_percent": 100.0,
-      "reliability_score": 66.7,
-      "checks": 1,
-      "history": [
-        true
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "157.66.16.52",
-      "port": 8080,
-      "country": "ID",
-      "source": "ProxMint",
+      "source": "history",
       "isp": "ProxMint",
       "online": true,
-      "latency_ms": 3026,
+      "latency_ms": 2188,
       "endpoint_checks_passed": 2,
       "uptime_percent": 100.0,
-      "reliability_score": 66.7,
-      "checks": 1,
+      "reliability_score": 75.0,
+      "checks": 2,
       "history": [
+        true,
         true
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "38.226.243.163",
-      "port": 8080,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "PT Putra Garsel Interkoneksi",
-      "online": true,
-      "latency_ms": 3090,
-      "endpoint_checks_passed": 2,
-      "uptime_percent": 100.0,
-      "reliability_score": 66.7,
-      "checks": 1,
-      "history": [
-        true
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "160.19.146.227",
-      "port": 2022,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "PT Taska Sarana Nusantara",
-      "online": true,
-      "latency_ms": 3418,
-      "endpoint_checks_passed": 2,
-      "uptime_percent": 100.0,
-      "reliability_score": 66.7,
-      "checks": 1,
-      "history": [
-        true
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.39.51.156",
-      "port": 1080,
-      "country": "ID",
-      "source": "ProxMint",
-      "isp": "ProxMint",
-      "online": true,
-      "latency_ms": 4192,
-      "endpoint_checks_passed": 2,
-      "uptime_percent": 100.0,
-      "reliability_score": 66.7,
-      "checks": 1,
-      "history": [
-        true
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.98.118.14",
-      "port": 8080,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "TESOLCITYNET",
-      "online": true,
-      "latency_ms": 4299,
-      "endpoint_checks_passed": 2,
-      "uptime_percent": 100.0,
-      "reliability_score": 66.7,
-      "checks": 1,
-      "history": [
-        true
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "202.58.77.214",
-      "port": 8080,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "PT Data Buana Nusantara",
-      "online": true,
-      "latency_ms": 4344,
-      "endpoint_checks_passed": 2,
-      "uptime_percent": 100.0,
-      "reliability_score": 66.7,
-      "checks": 1,
-      "history": [
-        true
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "202.145.5.208",
-      "port": 8080,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "PT Jala Lintas Media",
-      "online": true,
-      "latency_ms": 4858,
-      "endpoint_checks_passed": 2,
-      "uptime_percent": 100.0,
-      "reliability_score": 66.7,
-      "checks": 1,
-      "history": [
-        true
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.187.113.241",
-      "port": 1111,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "PT Adi Solusindo Teknologi",
-      "online": true,
-      "latency_ms": 5250,
-      "endpoint_checks_passed": 2,
-      "uptime_percent": 100.0,
-      "reliability_score": 66.7,
-      "checks": 1,
-      "history": [
-        true
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
       "ip": "103.156.16.237",
@@ -403,7 +152,61 @@
       "source": "ProxyScrape",
       "isp": "RSTNET",
       "online": true,
-      "latency_ms": 5460,
+      "latency_ms": 2221,
+      "endpoint_checks_passed": 2,
+      "uptime_percent": 100.0,
+      "reliability_score": 75.0,
+      "checks": 2,
+      "history": [
+        true,
+        true
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "160.19.146.227",
+      "port": 2022,
+      "country": "ID",
+      "source": "history",
+      "isp": "PT Taska Sarana Nusantara",
+      "online": true,
+      "latency_ms": 3777,
+      "endpoint_checks_passed": 2,
+      "uptime_percent": 100.0,
+      "reliability_score": 75.0,
+      "checks": 2,
+      "history": [
+        true,
+        true
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.156.75.243",
+      "port": 3125,
+      "country": "ID",
+      "source": "history",
+      "isp": "PT Trika Global Media",
+      "online": true,
+      "latency_ms": 5133,
+      "endpoint_checks_passed": 2,
+      "uptime_percent": 100.0,
+      "reliability_score": 75.0,
+      "checks": 2,
+      "history": [
+        true,
+        true
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.193.145.87",
+      "port": 1111,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": true,
+      "latency_ms": 756,
       "endpoint_checks_passed": 2,
       "uptime_percent": 100.0,
       "reliability_score": 66.7,
@@ -411,16 +214,50 @@
       "history": [
         true
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
-      "ip": "103.150.12.175",
+      "ip": "163.227.253.194",
+      "port": 3128,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "PT Equator Telecom Indonesia",
+      "online": true,
+      "latency_ms": 1668,
+      "endpoint_checks_passed": 2,
+      "uptime_percent": 100.0,
+      "reliability_score": 66.7,
+      "checks": 1,
+      "history": [
+        true
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.147.134.79",
+      "port": 8082,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": true,
+      "latency_ms": 1888,
+      "endpoint_checks_passed": 2,
+      "uptime_percent": 100.0,
+      "reliability_score": 66.7,
+      "checks": 1,
+      "history": [
+        true
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.205.223.49",
       "port": 8080,
       "country": "ID",
       "source": "ProxyScrape",
-      "isp": "PT Primacom Interbuana -ISP",
+      "isp": "PT Cipta Trimitra Perkasa",
       "online": true,
-      "latency_ms": 5580,
+      "latency_ms": 2303,
       "endpoint_checks_passed": 2,
       "uptime_percent": 100.0,
       "reliability_score": 66.7,
@@ -428,16 +265,16 @@
       "history": [
         true
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
-      "ip": "101.255.211.46",
-      "port": 8181,
+      "ip": "202.154.19.50",
+      "port": 3125,
       "country": "ID",
       "source": "ProxyScrape",
-      "isp": "PT Remala Abadi",
+      "isp": "DIGITNET",
       "online": true,
-      "latency_ms": 5958,
+      "latency_ms": 2342,
       "endpoint_checks_passed": 2,
       "uptime_percent": 100.0,
       "reliability_score": 66.7,
@@ -445,16 +282,16 @@
       "history": [
         true
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
-      "ip": "103.171.245.124",
-      "port": 8090,
+      "ip": "59.153.82.236",
+      "port": 8080,
       "country": "ID",
-      "source": "ProxMint",
-      "isp": "ProxMint",
+      "source": "ProxyScrape",
+      "isp": "ATSINDO",
       "online": true,
-      "latency_ms": 6021,
+      "latency_ms": 2848,
       "endpoint_checks_passed": 2,
       "uptime_percent": 100.0,
       "reliability_score": 66.7,
@@ -462,133 +299,113 @@
       "history": [
         true
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
-      "ip": "103.213.131.79",
-      "port": 8085,
+      "ip": "160.22.45.78",
+      "port": 8097,
       "country": "ID",
       "source": "ProxMint",
       "isp": "ProxMint",
       "online": true,
-      "latency_ms": 983,
+      "latency_ms": 3012,
       "endpoint_checks_passed": 2,
-      "uptime_percent": 50.0,
-      "reliability_score": 50.0,
-      "checks": 2,
+      "uptime_percent": 100.0,
+      "reliability_score": 66.7,
+      "checks": 1,
       "history": [
+        true
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "160.19.18.165",
+      "port": 8181,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": true,
+      "latency_ms": 3176,
+      "endpoint_checks_passed": 2,
+      "uptime_percent": 100.0,
+      "reliability_score": 66.7,
+      "checks": 1,
+      "history": [
+        true
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.177.153.42",
+      "port": 8080,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": true,
+      "latency_ms": 3314,
+      "endpoint_checks_passed": 2,
+      "uptime_percent": 100.0,
+      "reliability_score": 66.7,
+      "checks": 1,
+      "history": [
+        true
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "157.15.64.181",
+      "port": 8080,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "PT Cynet Indonesia Networks",
+      "online": true,
+      "latency_ms": 5342,
+      "endpoint_checks_passed": 2,
+      "uptime_percent": 100.0,
+      "reliability_score": 66.7,
+      "checks": 1,
+      "history": [
+        true
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.169.129.8",
+      "port": 8082,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": true,
+      "latency_ms": 1631,
+      "endpoint_checks_passed": 2,
+      "uptime_percent": 66.7,
+      "reliability_score": 60.0,
+      "checks": 3,
+      "history": [
+        true,
         false,
         true
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
       "ip": "103.18.76.181",
       "port": 8080,
       "country": "ID",
-      "source": "ProxyScrape",
+      "source": "history",
       "isp": "PT Usaha Adi Sanggoro",
       "online": true,
-      "latency_ms": 996,
+      "latency_ms": 4424,
       "endpoint_checks_passed": 2,
-      "uptime_percent": 50.0,
-      "reliability_score": 50.0,
-      "checks": 2,
+      "uptime_percent": 66.7,
+      "reliability_score": 60.0,
+      "checks": 3,
       "history": [
         false,
+        true,
         true
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.156.249.19",
-      "port": 8181,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "Trans Media Telekomunikasi",
-      "online": true,
-      "latency_ms": 2130,
-      "endpoint_checks_passed": 2,
-      "uptime_percent": 50.0,
-      "reliability_score": 50.0,
-      "checks": 2,
-      "history": [
-        false,
-        true
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.76.108.158",
-      "port": 8090,
-      "country": "ID",
-      "source": "ProxMint",
-      "isp": "ProxMint",
-      "online": true,
-      "latency_ms": 2826,
-      "endpoint_checks_passed": 2,
-      "uptime_percent": 50.0,
-      "reliability_score": 50.0,
-      "checks": 2,
-      "history": [
-        false,
-        true
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "165.99.239.17",
-      "port": 7777,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "PT MERDEKA TELEKOMUNIKASI CENTER",
-      "online": true,
-      "latency_ms": 3953,
-      "endpoint_checks_passed": 2,
-      "uptime_percent": 50.0,
-      "reliability_score": 50.0,
-      "checks": 2,
-      "history": [
-        false,
-        true
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "202.58.64.30",
-      "port": 8080,
-      "country": "ID",
-      "source": "ProxMint",
-      "isp": "ProxMint",
-      "online": true,
-      "latency_ms": 4180,
-      "endpoint_checks_passed": 2,
-      "uptime_percent": 50.0,
-      "reliability_score": 50.0,
-      "checks": 2,
-      "history": [
-        false,
-        true
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "165.101.42.140",
-      "port": 1080,
-      "country": "ID",
-      "source": "ProxMint",
-      "isp": "ProxMint",
-      "online": true,
-      "latency_ms": 7078,
-      "endpoint_checks_passed": 2,
-      "uptime_percent": 50.0,
-      "reliability_score": 50.0,
-      "checks": 2,
-      "history": [
-        false,
-        true
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
       "ip": "160.22.45.114",
@@ -596,12 +413,12 @@
       "country": "ID",
       "source": "ProxMint",
       "isp": "ProxMint",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 1,
-      "uptime_percent": 50.0,
-      "reliability_score": 50.0,
-      "checks": 10,
+      "online": true,
+      "latency_ms": 5053,
+      "endpoint_checks_passed": 2,
+      "uptime_percent": 54.5,
+      "reliability_score": 53.8,
+      "checks": 11,
       "history": [
         true,
         false,
@@ -612,16 +429,157 @@
         false,
         true,
         true,
-        false
+        false,
+        true
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
-      "ip": "103.156.17.253",
-      "port": 8085,
+      "ip": "103.176.97.62",
+      "port": 8082,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": true,
+      "latency_ms": 5156,
+      "endpoint_checks_passed": 2,
+      "uptime_percent": 50.0,
+      "reliability_score": 50.0,
+      "checks": 4,
+      "history": [
+        true,
+        false,
+        false,
+        true
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.147.135.34",
+      "port": 8082,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": true,
+      "latency_ms": 1396,
+      "endpoint_checks_passed": 2,
+      "uptime_percent": 50.0,
+      "reliability_score": 50.0,
+      "checks": 2,
+      "history": [
+        false,
+        true
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.171.182.163",
+      "port": 1111,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": true,
+      "latency_ms": 2496,
+      "endpoint_checks_passed": 2,
+      "uptime_percent": 50.0,
+      "reliability_score": 50.0,
+      "checks": 2,
+      "history": [
+        false,
+        true
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "116.254.118.180",
+      "port": 80,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": true,
+      "latency_ms": 1272,
+      "endpoint_checks_passed": 2,
+      "uptime_percent": 27.3,
+      "reliability_score": 30.8,
+      "checks": 11,
+      "history": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        true
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.69.106.78",
+      "port": 8181,
       "country": "ID",
       "source": "history",
-      "isp": "RSTNET",
+      "isp": "ProxMint",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 66.7,
+      "reliability_score": 60.0,
+      "checks": 3,
+      "history": [
+        true,
+        true,
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.171.182.80",
+      "port": 8080,
+      "country": "ID",
+      "source": "history",
+      "isp": "PT Hayat Teknologi Informatika",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 66.7,
+      "reliability_score": 60.0,
+      "checks": 3,
+      "history": [
+        true,
+        true,
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "160.22.222.135",
+      "port": 8097,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "PT Juara Network Tegal",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 66.7,
+      "reliability_score": 60.0,
+      "checks": 3,
+      "history": [
+        true,
+        true,
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "157.66.16.52",
+      "port": 8080,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
       "online": false,
       "latency_ms": null,
       "endpoint_checks_passed": 0,
@@ -632,7 +590,375 @@
         true,
         false
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "38.226.243.163",
+      "port": 8080,
+      "country": "ID",
+      "source": "history",
+      "isp": "PT Putra Garsel Interkoneksi",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 50.0,
+      "reliability_score": 50.0,
+      "checks": 2,
+      "history": [
+        true,
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.175.241.14",
+      "port": 8082,
+      "country": "ID",
+      "source": "history",
+      "isp": "LDP",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 50.0,
+      "reliability_score": 50.0,
+      "checks": 2,
+      "history": [
+        true,
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.39.51.156",
+      "port": 1080,
+      "country": "ID",
+      "source": "history",
+      "isp": "ProxMint",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 50.0,
+      "reliability_score": 50.0,
+      "checks": 2,
+      "history": [
+        true,
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.98.118.14",
+      "port": 8080,
+      "country": "ID",
+      "source": "history",
+      "isp": "TESOLCITYNET",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 50.0,
+      "reliability_score": 50.0,
+      "checks": 2,
+      "history": [
+        true,
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.187.113.241",
+      "port": 1111,
+      "country": "ID",
+      "source": "history",
+      "isp": "PT Adi Solusindo Teknologi",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 50.0,
+      "reliability_score": 50.0,
+      "checks": 2,
+      "history": [
+        true,
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "101.255.211.46",
+      "port": 8181,
+      "country": "ID",
+      "source": "history",
+      "isp": "PT Remala Abadi",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 50.0,
+      "reliability_score": 50.0,
+      "checks": 2,
+      "history": [
+        true,
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.150.12.175",
+      "port": 8080,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "PT Primacom Interbuana -ISP",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 50.0,
+      "reliability_score": 50.0,
+      "checks": 2,
+      "history": [
+        true,
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.171.245.124",
+      "port": 8090,
+      "country": "ID",
+      "source": "history",
+      "isp": "ProxMint",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 50.0,
+      "reliability_score": 50.0,
+      "checks": 2,
+      "history": [
+        true,
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.156.17.40",
+      "port": 8085,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "RSTNET",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 1,
+      "uptime_percent": 50.0,
+      "reliability_score": 50.0,
+      "checks": 2,
+      "history": [
+        true,
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "202.145.5.208",
+      "port": 8080,
+      "country": "ID",
+      "source": "history",
+      "isp": "PT Jala Lintas Media",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 1,
+      "uptime_percent": 50.0,
+      "reliability_score": 50.0,
+      "checks": 2,
+      "history": [
+        true,
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.70.122.90",
+      "port": 8085,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 1,
+      "uptime_percent": 50.0,
+      "reliability_score": 50.0,
+      "checks": 2,
+      "history": [
+        true,
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "202.58.77.214",
+      "port": 8080,
+      "country": "ID",
+      "source": "history",
+      "isp": "PT Data Buana Nusantara",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 1,
+      "uptime_percent": 50.0,
+      "reliability_score": 50.0,
+      "checks": 2,
+      "history": [
+        true,
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.213.131.79",
+      "port": 8085,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 33.3,
+      "reliability_score": 40.0,
+      "checks": 3,
+      "history": [
+        false,
+        true,
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.156.249.19",
+      "port": 8181,
+      "country": "ID",
+      "source": "history",
+      "isp": "Trans Media Telekomunikasi",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 33.3,
+      "reliability_score": 40.0,
+      "checks": 3,
+      "history": [
+        false,
+        true,
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.76.108.158",
+      "port": 8090,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 33.3,
+      "reliability_score": 40.0,
+      "checks": 3,
+      "history": [
+        false,
+        true,
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "202.58.64.30",
+      "port": 8080,
+      "country": "ID",
+      "source": "history",
+      "isp": "ProxMint",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 33.3,
+      "reliability_score": 40.0,
+      "checks": 3,
+      "history": [
+        false,
+        true,
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "165.99.239.17",
+      "port": 7777,
+      "country": "ID",
+      "source": "history",
+      "isp": "PT MERDEKA TELEKOMUNIKASI CENTER",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 33.3,
+      "reliability_score": 40.0,
+      "checks": 3,
+      "history": [
+        false,
+        true,
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "160.187.174.239",
+      "port": 8080,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "PT Netindo Persada Nusantara",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 33.3,
+      "reliability_score": 40.0,
+      "checks": 3,
+      "history": [
+        true,
+        false,
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "165.101.42.140",
+      "port": 1080,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 1,
+      "uptime_percent": 33.3,
+      "reliability_score": 40.0,
+      "checks": 3,
+      "history": [
+        false,
+        true,
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "157.15.187.69",
+      "port": 8090,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 33.3,
+      "reliability_score": 40.0,
+      "checks": 3,
+      "history": [
+        true,
+        false,
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
       "ip": "160.22.45.126",
@@ -643,132 +969,6 @@
       "online": false,
       "latency_ms": null,
       "endpoint_checks_passed": 0,
-      "uptime_percent": 50.0,
-      "reliability_score": 50.0,
-      "checks": 2,
-      "history": [
-        true,
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "162.4.39.18",
-      "port": 8080,
-      "country": "ID",
-      "source": "history",
-      "isp": "PT Lintas Cita Nusantara",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 50.0,
-      "reliability_score": 50.0,
-      "checks": 2,
-      "history": [
-        true,
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "160.187.174.239",
-      "port": 8080,
-      "country": "ID",
-      "source": "history",
-      "isp": "PT Netindo Persada Nusantara",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 50.0,
-      "reliability_score": 50.0,
-      "checks": 2,
-      "history": [
-        true,
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "36.88.163.36",
-      "port": 8080,
-      "country": "ID",
-      "source": "history",
-      "isp": "PT. Telekomunikasi Indonesia",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 50.0,
-      "reliability_score": 50.0,
-      "checks": 2,
-      "history": [
-        true,
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.171.82.21",
-      "port": 1111,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "PT Multi Network Indonesia",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 1,
-      "uptime_percent": 50.0,
-      "reliability_score": 50.0,
-      "checks": 2,
-      "history": [
-        true,
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.169.129.8",
-      "port": 8082,
-      "country": "ID",
-      "source": "ProxMint",
-      "isp": "ProxMint",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 1,
-      "uptime_percent": 50.0,
-      "reliability_score": 50.0,
-      "checks": 2,
-      "history": [
-        true,
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "157.15.187.69",
-      "port": 8090,
-      "country": "ID",
-      "source": "ProxMint",
-      "isp": "ProxMint",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 1,
-      "uptime_percent": 50.0,
-      "reliability_score": 50.0,
-      "checks": 2,
-      "history": [
-        true,
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.176.97.62",
-      "port": 8082,
-      "country": "ID",
-      "source": "ProxMint",
-      "isp": "ProxMint",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
       "uptime_percent": 33.3,
       "reliability_score": 40.0,
       "checks": 3,
@@ -777,7 +977,7 @@
         false,
         false
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
       "ip": "103.169.225.58",
@@ -788,22 +988,125 @@
       "online": false,
       "latency_ms": null,
       "endpoint_checks_passed": 0,
-      "uptime_percent": 33.3,
-      "reliability_score": 40.0,
-      "checks": 3,
+      "uptime_percent": 25.0,
+      "reliability_score": 33.3,
+      "checks": 4,
       "history": [
         true,
         false,
+        false,
         false
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
-      "ip": "103.160.205.244",
+      "ip": "36.92.24.12",
+      "port": 9100,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "PT. Telekomunikasi Indonesia",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "149.129.226.9",
+      "port": 69,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "Alibaba.com Singapore E-Commerce Private Limited",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "45.198.32.137",
+      "port": 8080,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "PT Global Media Data Prima",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "101.255.210.9",
+      "port": 3125,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "PT Remala Abadi",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.156.17.83",
+      "port": 8818,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "RSTNET",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.180.123.229",
+      "port": 1080,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "PT Indo Telemedia Solusi",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "160.19.176.39",
       "port": 8181,
       "country": "ID",
       "source": "ProxyScrape",
-      "isp": "PRIME",
+      "isp": "PT Awan Tiga Bintang",
       "online": false,
       "latency_ms": null,
       "endpoint_checks_passed": 0,
@@ -813,31 +1116,14 @@
       "history": [
         false
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
-      "ip": "103.161.1.114",
-      "port": 1111,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "METRO-RB",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.88.91.14",
+      "ip": "103.193.144.41",
       "port": 8080,
       "country": "ID",
-      "source": "ProxMint",
-      "isp": "ProxMint",
+      "source": "ProxyScrape",
+      "isp": "PT Lintas Jaringan Nusantara",
       "online": false,
       "latency_ms": null,
       "endpoint_checks_passed": 0,
@@ -847,10 +1133,163 @@
       "history": [
         false
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
-      "ip": "36.94.27.65",
+      "ip": "103.53.184.186",
+      "port": 8080,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "BOSOWA",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "192.147.114.171",
+      "port": 8080,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "PT Global Asta Systelematika",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.234.35.166",
+      "port": 8080,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "PT. EXABIT GROUP NETWORK",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "160.19.16.66",
+      "port": 8080,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "PT Media Balai Nusa",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.171.149.241",
+      "port": 8080,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "MYREPUBLIC",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.112.136.77",
+      "port": 8080,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "PT Pisangmas Rayatama Perkasa",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "202.51.121.59",
+      "port": 80,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "PT iForte Global Internet",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.166.158.193",
+      "port": 1080,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "PT Timor Lintas Nusantara",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.172.70.153",
+      "port": 9191,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "AZNET",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "36.64.44.51",
       "port": 8080,
       "country": "ID",
       "source": "ProxyScrape",
@@ -864,31 +1303,14 @@
       "history": [
         false
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
-      "ip": "157.20.121.131",
-      "port": 3128,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "PT Core Digital Network",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.188.252.39",
+      "ip": "38.226.243.129",
       "port": 8080,
       "country": "ID",
       "source": "ProxyScrape",
-      "isp": "PT Data Lintas Media Indonesia",
+      "isp": "PT Putra Garsel Interkoneksi",
       "online": false,
       "latency_ms": null,
       "endpoint_checks_passed": 0,
@@ -898,14 +1320,14 @@
       "history": [
         false
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
-      "ip": "110.76.147.29",
-      "port": 1080,
+      "ip": "157.20.35.40",
+      "port": 9090,
       "country": "ID",
       "source": "ProxyScrape",
-      "isp": "PT Pika Media Komunika",
+      "isp": "PT Desible Eradata Komunikasi",
       "online": false,
       "latency_ms": null,
       "endpoint_checks_passed": 0,
@@ -915,14 +1337,14 @@
       "history": [
         false
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
-      "ip": "210.87.92.54",
+      "ip": "103.14.111.188",
       "port": 8080,
       "country": "ID",
       "source": "ProxyScrape",
-      "isp": "PT Indo Telemedia Solusi",
+      "isp": "PT Asia Teknologi Solusi",
       "online": false,
       "latency_ms": null,
       "endpoint_checks_passed": 1,
@@ -932,10 +1354,146 @@
       "history": [
         false
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
-      "ip": "160.22.45.58",
+      "ip": "103.178.194.133",
+      "port": 2016,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "PT Jaringan Keluarga Bersama",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "216.243.112.30",
+      "port": 3128,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "PT Integrasi Jaringan Ekosistem",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "157.66.3.20",
+      "port": 1111,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "PT Ashyla Karya Abadi",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 1,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.131.19.30",
+      "port": 8011,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "PT Global Media Data Prima",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.113.3.29",
+      "port": 8080,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "Diskominfo Tangerang Selatan",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "36.64.18.91",
+      "port": 80,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "Telekomunikasi Indonesia",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "36.64.86.11",
+      "port": 8080,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "PT. Telekomunikasi Indonesia",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.165.155.22",
+      "port": 2016,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "PT Jaringan Keluarga Bersama",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "160.22.45.10",
       "port": 8080,
       "country": "ID",
       "source": "ProxyScrape",
@@ -949,31 +1507,14 @@
       "history": [
         false
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
-      "ip": "103.171.182.163",
-      "port": 1111,
-      "country": "ID",
-      "source": "ProxMint",
-      "isp": "ProxMint",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 1,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "38.188.63.169",
+      "ip": "165.101.43.181",
       "port": 8080,
       "country": "ID",
       "source": "ProxyScrape",
-      "isp": "PT Nesta Indo Media",
+      "isp": "PT Lintas Jaringan Nusantara",
       "online": false,
       "latency_ms": null,
       "endpoint_checks_passed": 0,
@@ -983,14 +1524,65 @@
       "history": [
         false
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
-      "ip": "31.58.57.82",
+      "ip": "103.188.169.93",
+      "port": 8080,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "PT Lintas Jaringan Nusantara",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.247.23.242",
       "port": 1111,
       "country": "ID",
       "source": "ProxyScrape",
-      "isp": "PT Atharva Telematika Persada",
+      "isp": "PT wifian Solution",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.153.62.239",
+      "port": 8085,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "PT Ikhlas Cipta Teknologi",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "45.198.10.189",
+      "port": 9191,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "PT Jaringan Lintas Artha",
       "online": false,
       "latency_ms": null,
       "endpoint_checks_passed": 1,
@@ -1000,10 +1592,197 @@
       "history": [
         false
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
-      "ip": "103.173.72.24",
+      "ip": "103.175.240.64",
+      "port": 3125,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "LDP",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.156.248.247",
+      "port": 8080,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "Trans Media Telekomunikasi",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.189.249.134",
+      "port": 1111,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "PT Berkah Media Kusuma Vision",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.148.45.51",
+      "port": 8080,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "PT BUANA VISUALNET SENTRA",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "157.15.63.48",
+      "port": 8080,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "AMAN ISP Customer Malang",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 1,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.152.238.21",
+      "port": 3125,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "APRIN",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.125.19.105",
+      "port": 8080,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "JAVAMEDIA",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 1,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "36.64.54.98",
+      "port": 8080,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "PT. Telekomunikasi Indonesia",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.131.19.41",
+      "port": 8080,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "PT Global Media Data Prima",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.160.205.86",
+      "port": 8080,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "202.58.73.6",
+      "port": 1111,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "PT Data Buana Nusantara",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.173.72.25",
       "port": 1111,
       "country": "ID",
       "source": "ProxyScrape",
@@ -1017,164 +1796,11 @@
       "history": [
         false
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
-      "ip": "38.58.117.72",
-      "port": 8080,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "PT Lintas Jaringan Nusantara",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.179.180.182",
-      "port": 3128,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "PT Karya Aneka Persada",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.178.21.104",
-      "port": 3125,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "PT Trisna Mega Abadi",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "165.101.230.155",
-      "port": 8080,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "PT Anugerah Cimanuk Raya",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "115.187.29.25",
-      "port": 89,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "PT Lintas Jaringan Mandiri",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 1,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "160.19.16.54",
+      "ip": "103.153.62.244",
       "port": 8181,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "PT Media Balai Nusa",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "121.101.129.131",
-      "port": 8080,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "PT SELARAS CITRA TERABIT",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "160.22.45.50",
-      "port": 8080,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "PT Celebes Multi Network",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.31.235.251",
-      "port": 8080,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "PT Usaha Adi Sanggoro",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "38.183.146.122",
-      "port": 8080,
       "country": "ID",
       "source": "ProxyScrape",
       "isp": "PT Ikhlas Cipta Teknologi",
@@ -1187,14 +1813,31 @@
       "history": [
         false
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
-      "ip": "103.68.215.93",
+      "ip": "154.18.255.115",
+      "port": 1111,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "PT Media Solusi Sukses",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "115.178.52.10",
       "port": 8080,
       "country": "ID",
       "source": "ProxyScrape",
-      "isp": "PT Media Grasi Internet",
+      "isp": "NOC SIMAYA",
       "online": false,
       "latency_ms": null,
       "endpoint_checks_passed": 0,
@@ -1204,14 +1847,14 @@
       "history": [
         false
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
-      "ip": "103.158.210.24",
-      "port": 8090,
+      "ip": "103.153.83.47",
+      "port": 8080,
       "country": "ID",
       "source": "ProxyScrape",
-      "isp": "DIGITNET",
+      "isp": "STREAKY",
       "online": false,
       "latency_ms": null,
       "endpoint_checks_passed": 0,
@@ -1221,44 +1864,10 @@
       "history": [
         false
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
-      "ip": "103.145.149.230",
-      "port": 80,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "PT. Indonesia Comnets Plus",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.160.205.12",
-      "port": 8081,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "PRIME",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.227.187.13",
+      "ip": "103.227.186.61",
       "port": 6080,
       "country": "ID",
       "source": "ProxyScrape",
@@ -1272,14 +1881,14 @@
       "history": [
         false
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
-      "ip": "45.198.20.173",
-      "port": 8080,
+      "ip": "103.19.78.242",
+      "port": 1080,
       "country": "ID",
       "source": "ProxyScrape",
-      "isp": "PT IKHLAS CIPTA TEKNOLOGI",
+      "isp": "PT Persada Data Multimedia",
       "online": false,
       "latency_ms": null,
       "endpoint_checks_passed": 0,
@@ -1289,65 +1898,14 @@
       "history": [
         false
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
-      "ip": "103.233.152.18",
-      "port": 8080,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "BIZNET",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.67.85.150",
-      "port": 3127,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "PT Tujuh Fondasi Teknologi",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "157.20.253.187",
-      "port": 80,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "PT.Global Media Data Prima",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "202.58.73.246",
+      "ip": "160.25.237.73",
       "port": 1111,
       "country": "ID",
       "source": "ProxyScrape",
-      "isp": "PT Data Buana Nusantara",
+      "isp": "PT Nada Freedom Indonesia",
       "online": false,
       "latency_ms": null,
       "endpoint_checks_passed": 0,
@@ -1357,252 +1915,14 @@
       "history": [
         false
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
-      "ip": "103.171.240.170",
-      "port": 8090,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "PT Abs Multimedia Indonesia",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.144.102.82",
-      "port": 8080,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "PANDAWANET",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.173.141.10",
-      "port": 8080,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "DIAZANETWORKS",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "160.22.45.74",
-      "port": 8097,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "PT Celebes Multi Network",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.68.215.123",
-      "port": 8080,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "PT Media Grasi Internet",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.147.247.191",
-      "port": 8080,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "PLBNET",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.165.128.171",
-      "port": 8080,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "PT iForte Global Internet",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.106.113.13",
-      "port": 8097,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "SMSNET",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 1,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "36.50.56.105",
-      "port": 8818,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "PT Andromega Data Nusantara",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.178.194.95",
-      "port": 8181,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "PT Jaringan Keluarga Bersama",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.174.122.215",
-      "port": 3128,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "PT Jaya Sejahtra Nugraha",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.36.9.9",
-      "port": 8181,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "PT Awinet Global Mandiri",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "154.19.39.50",
-      "port": 80,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "PT Lintas Network Solusi",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "101.255.151.246",
-      "port": 8080,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "PT Remala Abadi",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.84.140.3",
+      "ip": "163.61.245.53",
       "port": 3125,
       "country": "ID",
       "source": "ProxyScrape",
-      "isp": "PT. Cemerlang Multimedia",
+      "isp": "PT NAOMI AURORA TEKNOLOGI",
       "online": false,
       "latency_ms": null,
       "endpoint_checks_passed": 0,
@@ -1612,283 +1932,11 @@
       "history": [
         false
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
-      "ip": "36.92.140.113",
-      "port": 80,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "PT. Telekomunikasi Indonesia",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.66.47.10",
+      "ip": "103.242.104.150",
       "port": 8080,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "PT Iconmedia Lintas Nusantara",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "36.92.149.235",
-      "port": 8080,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "Telekomunikasi Indonesia",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "43.229.254.221",
-      "port": 8181,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "PT. Media Antar Nusa",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "45.198.10.159",
-      "port": 9191,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "PT Jaringan Lintas Artha",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.167.171.147",
-      "port": 1111,
-      "country": "ID",
-      "source": "ProxMint",
-      "isp": "ProxMint",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 1,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.147.135.34",
-      "port": 8082,
-      "country": "ID",
-      "source": "ProxMint",
-      "isp": "ProxMint",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.172.71.165",
-      "port": 9191,
-      "country": "ID",
-      "source": "ProxMint",
-      "isp": "ProxMint",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.170.97.210",
-      "port": 7777,
-      "country": "ID",
-      "source": "ProxMint",
-      "isp": "ProxMint",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.189.138.254",
-      "port": 8080,
-      "country": "ID",
-      "source": "ProxMint",
-      "isp": "ProxMint",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "144.79.241.243",
-      "port": 3128,
-      "country": "ID",
-      "source": "ProxMint",
-      "isp": "ProxMint",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.105.76.10",
-      "port": 3125,
-      "country": "ID",
-      "source": "ProxMint",
-      "isp": "ProxMint",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.154.52.5",
-      "port": 1111,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "WIFIKITA",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.39.70.252",
-      "port": 8181,
-      "country": "ID",
-      "source": "ProxMint",
-      "isp": "ProxMint",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.189.119.239",
-      "port": 8080,
-      "country": "ID",
-      "source": "ProxMint",
-      "isp": "ProxMint",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "110.136.10.49",
-      "port": 8080,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "PT. TELKOM INDONESIA",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 1,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "38.58.114.145",
-      "port": 3125,
       "country": "ID",
       "source": "ProxyScrape",
       "isp": "PT Lintas Jaringan Nusantara",
@@ -1901,11 +1949,113 @@
       "history": [
         false
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
-      "ip": "103.178.3.191",
-      "port": 8818,
+      "ip": "103.171.255.243",
+      "port": 8086,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "PT Zona Kolektif Indonesia",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.81.110.137",
+      "port": 3125,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "PT Fiber Data Nusantara",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.69.106.138",
+      "port": 3125,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "PT. Berkat Dunia Digital Cikande",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.180.118.122",
+      "port": 1080,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "PT Persada Data Multimedia",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.174.122.4",
+      "port": 3128,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "PT Jaya Sejahtra Nugraha",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 1,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.188.173.101",
+      "port": 1080,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "PT Satria Digital Media",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.230.48.110",
+      "port": 8082,
       "country": "ID",
       "source": "ProxMint",
       "isp": "ProxMint",
@@ -1918,27 +2068,129 @@
       "history": [
         false
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
-      "ip": "103.172.42.147",
+      "ip": "202.8.29.92",
+      "port": 8080,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "PT MULTI MEDIA ACCESS",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 1,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.109.173.171",
+      "port": 80,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.8.59.12",
+      "port": 8080,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "210.87.92.82",
+      "port": 8080,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "PT Indo Telemedia Solusi",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 1,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.175.238.150",
+      "port": 8085,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.173.72.3",
       "port": 1111,
       "country": "ID",
-      "source": "ProxMint",
-      "isp": "ProxMint",
+      "source": "ProxyScrape",
+      "isp": "PT Eyza Kausa Sinergi Abadi",
       "online": false,
       "latency_ms": null,
-      "endpoint_checks_passed": 0,
+      "endpoint_checks_passed": 1,
       "uptime_percent": 0.0,
       "reliability_score": 33.3,
       "checks": 1,
       "history": [
         false
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
-      "ip": "103.185.43.242",
+      "ip": "103.146.26.106",
+      "port": 8080,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "INMEET",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 1,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "203.128.75.195",
       "port": 8080,
       "country": "ID",
       "source": "ProxMint",
@@ -1952,10 +2204,10 @@
       "history": [
         false
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
-      "ip": "103.160.41.8",
+      "ip": "103.193.144.223",
       "port": 8080,
       "country": "ID",
       "source": "ProxMint",
@@ -1969,10 +2221,44 @@
       "history": [
         false
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
-      "ip": "103.162.54.178",
+      "ip": "160.19.18.35",
+      "port": 8080,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "163.61.112.252",
+      "port": 8080,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.158.210.7",
       "port": 8090,
       "country": "ID",
       "source": "ProxMint",
@@ -1986,61 +2272,10 @@
       "history": [
         false
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
-      "ip": "103.179.252.221",
-      "port": 8181,
-      "country": "ID",
-      "source": "ProxMint",
-      "isp": "ProxMint",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.147.135.18",
-      "port": 8082,
-      "country": "ID",
-      "source": "ProxMint",
-      "isp": "ProxMint",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "160.22.207.73",
-      "port": 8082,
-      "country": "ID",
-      "source": "ProxMint",
-      "isp": "ProxMint",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.18.78.229",
+      "ip": "163.223.150.31",
       "port": 8080,
       "country": "ID",
       "source": "ProxMint",
@@ -2054,7 +2289,607 @@
       "history": [
         false
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "157.66.51.201",
+      "port": 8080,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "160.22.26.28",
+      "port": 8088,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 1,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.133.25.247",
+      "port": 8080,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.55.22.226",
+      "port": 8080,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "182.23.35.242",
+      "port": 8080,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "203.175.102.169",
+      "port": 3125,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.124.197.227",
+      "port": 8080,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.178.86.178",
+      "port": 8080,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 1,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.172.17.51",
+      "port": 8080,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "202.58.65.5",
+      "port": 8080,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.112.163.46",
+      "port": 8080,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 1,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "157.20.100.194",
+      "port": 8080,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "45.198.11.9",
+      "port": 9191,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "58.147.186.214",
+      "port": 3125,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.153.191.119",
+      "port": 3128,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.18.79.197",
+      "port": 8085,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.80.215.123",
+      "port": 8080,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "49.0.26.97",
+      "port": 8080,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.188.169.95",
+      "port": 8080,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.97.198.2",
+      "port": 8080,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "45.123.142.17",
+      "port": 8181,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "157.66.236.27",
+      "port": 1080,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "202.152.142.98",
+      "port": 8080,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.82.246.21",
+      "port": 6080,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.124.196.218",
+      "port": 8080,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.175.238.193",
+      "port": 8082,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "157.15.116.26",
+      "port": 8082,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "113.192.12.4",
+      "port": 3333,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 1,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "115.178.49.115",
+      "port": 8787,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.144.54.43",
+      "port": 8082,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 1,
+      "uptime_percent": 0.0,
+      "reliability_score": 33.3,
+      "checks": 1,
+      "history": [
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.233.152.18",
+      "port": 8080,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "BIZNET",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 25.0,
+      "checks": 2,
+      "history": [
+        false,
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.171.240.170",
+      "port": 8090,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "PT Abs Multimedia Indonesia",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 25.0,
+      "checks": 2,
+      "history": [
+        false,
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "45.198.20.173",
+      "port": 8080,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "PT IKHLAS CIPTA TEKNOLOGI",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 25.0,
+      "checks": 2,
+      "history": [
+        false,
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.179.180.182",
+      "port": 3128,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "PT Karya Aneka Persada",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 25.0,
+      "checks": 2,
+      "history": [
+        false,
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "103.160.41.8",
+      "port": 8080,
+      "country": "ID",
+      "source": "ProxyScrape",
+      "isp": "WISTEL",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 25.0,
+      "checks": 2,
+      "history": [
+        false,
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
       "ip": "103.176.96.50",
@@ -2066,15 +2901,16 @@
       "latency_ms": null,
       "endpoint_checks_passed": 0,
       "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
+      "reliability_score": 25.0,
+      "checks": 2,
       "history": [
+        false,
         false
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
-      "ip": "45.198.33.65",
+      "ip": "160.22.45.58",
       "port": 8080,
       "country": "ID",
       "source": "ProxMint",
@@ -2083,16 +2919,17 @@
       "latency_ms": null,
       "endpoint_checks_passed": 0,
       "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
+      "reliability_score": 25.0,
+      "checks": 2,
       "history": [
+        false,
         false
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
-      "ip": "43.252.238.102",
-      "port": 8080,
+      "ip": "103.145.149.230",
+      "port": 80,
       "country": "ID",
       "source": "ProxMint",
       "isp": "ProxMint",
@@ -2100,29 +2937,13 @@
       "latency_ms": null,
       "endpoint_checks_passed": 0,
       "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
+      "reliability_score": 25.0,
+      "checks": 2,
       "history": [
+        false,
         false
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.174.122.88",
-      "port": 3128,
-      "country": "ID",
-      "source": "ProxMint",
-      "isp": "ProxMint",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
       "ip": "163.61.245.58",
@@ -2134,215 +2955,20 @@
       "latency_ms": null,
       "endpoint_checks_passed": 0,
       "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "198.15.30.114",
-      "port": 8080,
-      "country": "ID",
-      "source": "ProxMint",
-      "isp": "ProxMint",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.133.24.5",
-      "port": 8080,
-      "country": "ID",
-      "source": "ProxMint",
-      "isp": "ProxMint",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "82.39.174.98",
-      "port": 8080,
-      "country": "ID",
-      "source": "ProxMint",
-      "isp": "ProxMint",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.160.69.161",
-      "port": 8080,
-      "country": "ID",
-      "source": "ProxMint",
-      "isp": "ProxMint",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.176.96.23",
-      "port": 8080,
-      "country": "ID",
-      "source": "ProxMint",
-      "isp": "ProxMint",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "43.252.238.56",
-      "port": 8080,
-      "country": "ID",
-      "source": "ProxMint",
-      "isp": "ProxMint",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "165.99.30.34",
-      "port": 7777,
-      "country": "ID",
-      "source": "ProxMint",
-      "isp": "ProxMint",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 1,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "38.52.148.18",
-      "port": 3125,
-      "country": "ID",
-      "source": "ProxMint",
-      "isp": "ProxMint",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 1,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.210.119.155",
-      "port": 1080,
-      "country": "ID",
-      "source": "ProxMint",
-      "isp": "ProxMint",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 1,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.154.76.18",
-      "port": 8080,
-      "country": "ID",
-      "source": "ProxMint",
-      "isp": "ProxMint",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 1,
-      "uptime_percent": 0.0,
-      "reliability_score": 33.3,
-      "checks": 1,
-      "history": [
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "116.254.118.180",
-      "port": 80,
-      "country": "ID",
-      "source": "ProxMint",
-      "isp": "ProxMint",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 20.0,
       "reliability_score": 25.0,
-      "checks": 10,
+      "checks": 2,
       "history": [
-        true,
-        false,
-        false,
-        false,
-        false,
-        true,
-        false,
-        false,
         false,
         false
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
-      "ip": "103.208.101.34",
+      "ip": "103.189.119.239",
       "port": 8080,
       "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "PT Tidar Lintas Nusa",
+      "source": "ProxMint",
+      "isp": "ProxMint",
       "online": false,
       "latency_ms": null,
       "endpoint_checks_passed": 0,
@@ -2353,14 +2979,14 @@
         false,
         false
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
-      "ip": "103.199.117.206",
+      "ip": "103.88.91.14",
       "port": 8080,
       "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "PT Hepra Teknologi Indonesia",
+      "source": "ProxMint",
+      "isp": "ProxMint",
       "online": false,
       "latency_ms": null,
       "endpoint_checks_passed": 0,
@@ -2371,46 +2997,10 @@
         false,
         false
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
-      "ip": "103.174.122.98",
-      "port": 3128,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "PT Jaya Sejahtra Nugraha",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 25.0,
-      "checks": 2,
-      "history": [
-        false,
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.155.196.48",
-      "port": 8181,
-      "country": "ID",
-      "source": "ProxyScrape",
-      "isp": "JEMBATANDATA",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 1,
-      "uptime_percent": 0.0,
-      "reliability_score": 25.0,
-      "checks": 2,
-      "history": [
-        false,
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "160.22.198.28",
+      "ip": "160.22.207.73",
       "port": 8082,
       "country": "ID",
       "source": "ProxMint",
@@ -2425,172 +3015,10 @@
         false,
         false
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
-      "ip": "157.15.139.55",
-      "port": 8090,
-      "country": "ID",
-      "source": "ProxMint",
-      "isp": "ProxMint",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 25.0,
-      "checks": 2,
-      "history": [
-        false,
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.166.158.213",
-      "port": 8080,
-      "country": "ID",
-      "source": "ProxMint",
-      "isp": "ProxMint",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 25.0,
-      "checks": 2,
-      "history": [
-        false,
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.166.9.194",
-      "port": 8888,
-      "country": "ID",
-      "source": "ProxMint",
-      "isp": "ProxMint",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 25.0,
-      "checks": 2,
-      "history": [
-        false,
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.195.142.250",
-      "port": 8180,
-      "country": "ID",
-      "source": "ProxMint",
-      "isp": "ProxMint",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 25.0,
-      "checks": 2,
-      "history": [
-        false,
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.75.84.63",
-      "port": 8085,
-      "country": "ID",
-      "source": "ProxMint",
-      "isp": "ProxMint",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 1,
-      "uptime_percent": 0.0,
-      "reliability_score": 25.0,
-      "checks": 2,
-      "history": [
-        false,
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "5.181.178.46",
-      "port": 8080,
-      "country": "ID",
-      "source": "ProxMint",
-      "isp": "ProxMint",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 25.0,
-      "checks": 2,
-      "history": [
-        false,
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.81.65.190",
-      "port": 8089,
-      "country": "ID",
-      "source": "ProxMint",
-      "isp": "ProxMint",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 25.0,
-      "checks": 2,
-      "history": [
-        false,
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.151.35.141",
-      "port": 8080,
-      "country": "ID",
-      "source": "ProxMint",
-      "isp": "ProxMint",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 25.0,
-      "checks": 2,
-      "history": [
-        false,
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "175.106.13.114",
-      "port": 8080,
-      "country": "ID",
-      "source": "ProxMint",
-      "isp": "ProxMint",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 25.0,
-      "checks": 2,
-      "history": [
-        false,
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.153.134.62",
+      "ip": "103.167.171.147",
       "port": 1111,
       "country": "ID",
       "source": "ProxMint",
@@ -2605,11 +3033,47 @@
         false,
         false
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
-      "ip": "103.139.126.85",
+      "ip": "103.185.43.242",
       "port": 8080,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 25.0,
+      "checks": 2,
+      "history": [
+        false,
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "198.15.30.114",
+      "port": 8080,
+      "country": "ID",
+      "source": "ProxMint",
+      "isp": "ProxMint",
+      "online": false,
+      "latency_ms": null,
+      "endpoint_checks_passed": 0,
+      "uptime_percent": 0.0,
+      "reliability_score": 25.0,
+      "checks": 2,
+      "history": [
+        false,
+        false
+      ],
+      "last_checked": "2026-11-20T00:56:14+00:00"
+    },
+    {
+      "ip": "160.22.198.28",
+      "port": 8082,
       "country": "ID",
       "source": "ProxMint",
       "isp": "ProxMint",
@@ -2624,11 +3088,11 @@
         false,
         false
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
-      "ip": "103.20.191.118",
-      "port": 8080,
+      "ip": "157.15.139.55",
+      "port": 8090,
       "country": "ID",
       "source": "ProxMint",
       "isp": "ProxMint",
@@ -2643,11 +3107,11 @@
         false,
         false
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
-      "ip": "157.20.208.84",
-      "port": 8080,
+      "ip": "103.75.84.63",
+      "port": 8085,
       "country": "ID",
       "source": "ProxMint",
       "isp": "ProxMint",
@@ -2655,19 +3119,18 @@
       "latency_ms": null,
       "endpoint_checks_passed": 0,
       "uptime_percent": 0.0,
-      "reliability_score": 16.7,
-      "checks": 4,
+      "reliability_score": 20.0,
+      "checks": 3,
       "history": [
-        false,
         false,
         false,
         false
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     },
     {
-      "ip": "103.177.106.83",
-      "port": 1080,
+      "ip": "103.153.134.62",
+      "port": 1111,
       "country": "ID",
       "source": "ProxMint",
       "isp": "ProxMint",
@@ -2675,42 +3138,14 @@
       "latency_ms": null,
       "endpoint_checks_passed": 1,
       "uptime_percent": 0.0,
-      "reliability_score": 14.3,
-      "checks": 5,
+      "reliability_score": 20.0,
+      "checks": 3,
       "history": [
-        false,
-        false,
         false,
         false,
         false
       ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
-    },
-    {
-      "ip": "103.122.0.52",
-      "port": 8181,
-      "country": "ID",
-      "source": "ProxMint",
-      "isp": "ProxMint",
-      "online": false,
-      "latency_ms": null,
-      "endpoint_checks_passed": 0,
-      "uptime_percent": 0.0,
-      "reliability_score": 8.3,
-      "checks": 10,
-      "history": [
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false,
-        false
-      ],
-      "last_checked": "2026-11-19T18:18:45+00:00"
+      "last_checked": "2026-11-20T00:56:14+00:00"
     }
   ]
 }
