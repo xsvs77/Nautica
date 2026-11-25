@@ -1,10 +1,11 @@
 103.130.61.61,8081,ID,ProxMint
-103.163.80.181,8085,ID,ProxMint
-103.175.202.138,8090,ID,ProxMint
-160.19.19.102,8080,ID,PT Indo Telemedia Solusi
-157.66.16.48,8181,ID,ProxMint
-103.245.16.133,8080,ID,PT Quantum Tera Network
-157.10.97.101,8181,ID,PT Lintas Jaringan Nusantara
-45.198.10.53,9191,ID,PT Jaringan Lintas Artha
-160.22.45.114,8080,ID,ProxMint
-9.154.243.10,8080,ID,ProxMint
+43.252.107.46,8080,ID,PT Lintas Data Prima
+157.20.253.187,80,ID,PT.Global Media Data Prima
+38.226.242.61,8080,ID,PT Putra Garsel Interkoneksi
+38.183.144.94,8088,ID,PT Ikhlas Cipta Teknologi
+160.22.45.66,8080,ID,ProxMint
+38.226.243.145,8080,ID,PT Putra Garsel Interkoneksi
+160.20.38.58,3125,ID,ProxMint
+45.249.216.248,6060,ID,ProxMint
+103.125.15.45,8181,ID,ProxMint
+121.101.131.162,8181,ID,ProxMint
